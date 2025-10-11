@@ -20,37 +20,33 @@
 
 = Introdução
 
-Criar um site interativo que funcione com banco de dados é um dos maiores desafios no desenvolvimento de sites modernos. Para fazer isso, o desenvolvedor precisa dominar várias tecnologias diferentes ao mesmo tempo. É como precisar construir uma casa e ao mesmo tempo projetar toda a parte elétrica e hidráulica - tudo precisa funcionar junto de forma harmoniosa.
+Criar um site interativo que funcione com banco de dados é um dos maiores desafios no desenvolvimento de sites modernos. Para fazer isso, o desenvolvedor precisa dominar várias tecnologias diferentes ao mesmo tempo, incluindo tanto a camada de apresentação quanto a lógica de negócios e persistência de dados - tudo precisa funcionar junto de forma harmoniosa.
 
-De um lado, temos a parte visual do site (chamada de frontend), onde o desenvolvedor precisa criar uma experiência agradável para o usuário, fazer o site funcionar bem em celulares e computadores, e garantir que tudo responda rapidamente aos cliques e ações do visitante. Do outro lado, temos a parte invisível (o backend), que cuida de armazenar informações, verificar quem pode acessar o quê, e proteger os dados dos usuários.
-
-Juntar essas duas partes é complicado. Imagine que você precisa garantir que o site seja rápido mesmo com milhares de visitantes ao mesmo tempo, funcione bem em qualquer dispositivo, e ainda seja seguro contra pessoas mal-intencionadas que tentam roubar informações. Tudo isso exige muito conhecimento e experiência, tornando o processo longo e difícil para muitos desenvolvedores.
+A complexidade aumenta quando consideramos os requisitos não-funcionais como performance sob carga, responsividade em múltiplos dispositivos, segurança contra ataques e gerenciamento adequado de permissões de acesso. Tudo isso exige conhecimento multidisciplinar e experiência prática, tornando o desenvolvimento um processo complexo e demorado.
 
 == Objetivos
 
-=== Objetivo Geral
 
 Desenvolver um sistema de gerenciamento de conteúdo headless (CMS Headless) que permita a criação, edição e distribuição de conteúdo de forma desacoplada, oferecendo flexibilidade para desenvolvedores criarem interfaces personalizadas enquanto mantém a facilidade de uso para editores de conteúdo, demonstrando na prática as vantagens arquiteturais desta abordagem moderna em comparação aos CMS tradicionais.
 
 === Objetivos Específicos
 
-1. Implementar uma arquitetura de banco de dados PostgreSQL que suporte a natureza dinâmica das coleções de conteúdo
-2. Desenvolver um sistema de autenticação utilizando tokens JWT com criptografia RSA
-3. Criar uma interface administrativa em SolidJS para gerenciamento de conteúdo
-4. Implementar APIs REST e GraphQL para consumo flexível do conteúdo
-5. Desenvolver um sistema de gerenciamento de assets para mídias
-6. Implementar controle de acesso granular até o nível de campos individuais
-7. Demonstrar a flexibilidade da arquitetura headless através de casos de uso práticos
+1. Desenvolver uma interface administrativa web para facilitar o gerenciamento de conteúdo sem necessidade de ferramentas externas
+2. Desenvolver bibliotecas de acesso para facilitar o uso do sistema.
 
 == Metodologia
 
-O CMS Headless será desenvolvido com uma arquitetura centrada na flexibilidade de criação e gerenciamento de conteúdo. O sistema permitirá aos usuários definir suas próprias coleções de dados de forma dinâmica através de um dashboard administrativo, onde cada coleção poderá ter campos e tipos de dados customizados conforme a necessidade específica do projeto, eliminando a rigidez dos CMS tradicionais baseados em templates fixos.
+O projeto será desenvolvido utilizando metodologia ágil com ciclos iterativos de desenvolvimento. A implementação seguirá uma abordagem em camadas, iniciando pela infraestrutura de dados e progredindo até a interface de usuário.
 
-O sistema de autenticação utilizará tokens JWT com criptografia RSA, garantindo segurança na comunicação e controle de acesso granular aos recursos do CMS. Os usuários autenticados poderão criar, editar e gerenciar suas coleções através de uma interface que será construída em SolidJS, oferecendo uma experiência reativa e moderna para administração de conteúdo.
+*Fase 1 - Fundação*: Implementação da arquitetura do banco de dados e sistema de autenticação, estabelecendo a base para as demais funcionalidades.
 
-A arquitetura do banco de dados PostgreSQL será projetada para suportar a natureza dinâmica das coleções, permitindo que o sistema armazene diferentes tipos de conteúdo sem necessidade de modificações estruturais no esquema do banco. O sistema também incorporará um serviço dedicado para gerenciamento de assets, facilitando o upload e organização de mídias associadas ao conteúdo.
+*Fase 2 - Core*: Desenvolvimento das funcionalidades principais de gerenciamento de coleções e entradas de conteúdo, incluindo o sistema ABAC para controle de acesso.
 
-A camada de consultas oferecerá APIs que permitirão aos desenvolvedores frontend consumir o conteúdo de forma flexível, seja através de consultas REST ou GraphQL, proporcionando total liberdade na apresentação dos dados em qualquer tecnologia ou plataforma. Esta abordagem demonstrará como um CMS Headless pode oferecer máxima flexibilidade tanto para criadores de conteúdo quanto para desenvolvedores.
+*Fase 3 - APIs*: Implementação das camadas de comunicação REST e GraphQL com seus respectivos sistemas de resolução e otimização.
+
+*Fase 4 - Interface*: Desenvolvimento do painel administrativo com interface adaptativa baseada nos schemas definidos.
+
+*Fase 5 - Validação*: Testes de funcionalidade, performance e segurança, seguidos de ajustes e otimizações.
 
 // ================================
 // CAPÍTULO 2 - REFERENCIAL TEÓRICO
@@ -184,7 +180,7 @@ Essa abordagem permite o "Content as a Service" (CaaS), ou "Conteúdo como Servi
 
 === Vantagens da Arquitetura Headless
 
-*Liberdade Tecnológica*: Você pode usar as melhores ferramentas para cada parte. Quer fazer o site visual em React? O app de celular em Flutter? O painel administrativo em Vue? Todos podem usar os mesmos dados do backend.
+*Liberdade Tecnológica*: Você pode usar as melhores ferramentas para cada parte. Diferentes tecnologias de interface podem coexistir - site, aplicativo móvel e painel administrativo podem usar tecnologias distintas, mas todos consomem os mesmos dados do backend.
 
 *Escalabilidade Independente*: Se o site está recebendo muito tráfego, você pode aumentar apenas os recursos do frontend. Se precisa processar mais conteúdo, aumenta apenas o backend. É como poder expandir cômodos específicos da casa sem mexer nos outros.
 
@@ -249,7 +245,7 @@ A arquitetura de dados implementa estratégias diferenciadas baseadas na naturez
 
 *Tipos Primitivos*: Text, boolean, number e date_time são armazenados em tabelas dedicadas (entry_texts, entry_booleans, entry_numbers, entry_datetimes). Esta abordagem permite indexação eficiente e consultas otimizadas para operações comuns como busca textual e comparações numéricas.
 
-*Tipos Complexos*: Object, text_list, number_list e json são armazenados na tabela unificada entry_json_data, aproveitando as capacidades nativas do PostgreSQL para dados semi-estruturados. O campo value_type permite distinguir entre diferentes estruturas JSON, mantendo type safety a nível de aplicação.
+*Tipos Complexos*: Object, text_list, number_list e json são armazenados na tabela unificada entry_json_data, aproveitando as capacidades nativas de bancos de dados relacionais modernos para dados semi-estruturados. O campo value_type permite distinguir entre diferentes estruturas JSON, mantendo type safety a nível de aplicação.
 
 *Tipos Especiais*: Assets utilizam tabela de referência (entry_assets) para metadados de arquivos, enquanto rich_text implementa armazenamento dual (raw + rendered) para otimização de performance de renderização.
 
@@ -358,29 +354,17 @@ Várias organizações grandes já usam sistemas com ABAC:
 
 *Serviços de Streaming*: A Netflix utiliza sistemas de controle de acesso avançados para gerenciar permissões em sua arquitetura de microserviços de alta performance.
 
-=== O Diferencial Deste Projeto
+== Tecnologias de Interface Moderna
 
-Analisando o mercado atual, este projeto preenche algumas lacunas importantes:
+As tecnologias de interface modernas representam uma evolução significativa no desenvolvimento de aplicações web, oferecendo diferentes abordagens para gerenciamento de estado e atualização de interfaces de usuário.
 
-*ABAC Nativo em CMS Headless*: É raro encontrar CMS headless com controle de acesso baseado em atributos desde o início. Isso é valioso para organizações com necessidades complexas de segurança e compliance.
+Para aplicações de gerenciamento de conteúdo, as características das tecnologias de interface modernas oferecem vantagens específicas:
 
-*Otimização para Performance*: A estratégia de armazenamento híbrida oferece vantagens de velocidade na avaliação de políticas de acesso em comparação com abordagens tradicionais.
+*Tamanho Otimizado*: Tecnologias modernas oferecem pacotes menores e tempo de carregamento reduzido, beneficiando dashboards administrativos que frequentemente incluem múltiplas bibliotecas especializadas.
 
-*Segurança Contextual*: A capacidade de considerar hora do dia, localização, tipo de dispositivo e outros fatores contextuais nas decisões de acesso representa um nível de segurança mais moderno e adaptável.
+*Performance Consistente*: Técnicas modernas de atualização de interface oferecem renderização mais eficiente para aplicações que manipulam grandes volumes de dados, como listas de entradas de conteúdo ou árvores de categorias.
 
-== Frameworks Reativos Modernos
-
-Os frameworks reativos modernos representam uma evolução significativa no desenvolvimento de interfaces de usuário, oferecendo diferentes abordagens para gerenciamento de estado e atualização de interfaces. Frameworks como React, SolidJS e Vue implementam paradigmas de reatividade que variam entre Virtual DOM e fine-grained reactivity.
-
-Conforme documentado por @solidjs2024docs, frameworks como SolidJS utilizam "compilation-time optimizations para criar updates granulares que atingem apenas os nós DOM específicos que necessitam mudança", eliminando a necessidade de reconciliação completa de árvores de componentes.
-
-Para aplicações de gerenciamento de conteúdo, as características dos frameworks reativos modernos oferecem vantagens específicas:
-
-*Bundle Size Otimizado*: Frameworks como SolidJS oferecem runtime menor comparado a alternativas tradicionais, beneficiando dashboards administrativos que frequentemente incluem múltiplas bibliotecas especializadas.
-
-*Performance Consistente*: A abordagem fine-grained reactivity oferece atualizações mais eficientes para interfaces que manipulam grandes volumes de dados, como listas de entradas de conteúdo ou árvores de categorias.
-
-*Developer Experience*: A sintaxe baseada em JSX, comum a frameworks modernos, reduz a curva de aprendizado para desenvolvedores, facilitando migração e onboarding de equipes.
+*Experiência do Desenvolvedor*: Sintaxes declarativas modernas reduzem a curva de aprendizado para desenvolvedores, facilitando migração e onboarding de equipes.
 
 // ================================
 // CAPÍTULO 3 - CONCEITO E DESIGN DO SISTEMA
@@ -390,117 +374,78 @@ Para aplicações de gerenciamento de conteúdo, as características dos framewo
 
 Este capítulo explica como o sistema foi pensado e construído, quais tecnologias foram escolhidas e por que, e como todas as partes trabalham juntas para criar uma solução completa de gerenciamento de conteúdo.
 
-== Como o Sistema se Organiza
+== Arquitetura do Sistema
 
-O sistema foi construído como peças de LEGO que se encaixam - cada parte tem sua função específica e conversam entre si através de conexões bem definidas. Vamos visualizar isso em três camadas principais:
+O sistema adota arquitetura em três camadas com separação clara de responsabilidades e comunicação via interfaces bem definidas.
 
 #figure(
   image("diagramas/Diagrama do sistema.png", width: 100%),
   caption: [Estrutura do sistema mostrando como as três camadas principais se conectam]
 ) <fig-system-diagram>
 
-=== As Três Camadas do Sistema
+=== Camadas Arquiteturais
 
-*Camada de Armazenamento (onde os dados ficam guardados)*:
+*Camada de Persistência*:
+- Banco de dados relacional para dados estruturados e relacionais
+- Sistema de cache em memória para sessões e resultados de avaliações ABAC
 
-Esta é como o arquivo ou biblioteca do sistema. Aqui ficam todos os dados guardados de forma segura e organizada. Usa duas tecnologias principais:
+*Camada de Aplicação*:
+- API GraphQL como interface principal de consulta
+- Endpoints REST para autenticação e gerenciamento de assets
+- Motor ABAC integrado para controle de acesso
 
-- *PostgreSQL*: Um banco de dados robusto que guarda todo o conteúdo, usuários, permissões - basicamente tudo que precisa ser permanente
-- *Redis*: Um sistema de cache rápido que guarda informações temporárias, como sessões de usuários logados e decisões de acesso recentes, para tornar tudo mais rápido
+*Camada de Apresentação*:
+- Painel administrativo implementado com tecnologia de interface moderna
+- Frontend consumidor pode ser implementado em qualquer tecnologia
 
-*Camada de Comunicação (a ponte entre os dados e o usuário)*:
+=== Decisões Arquiteturais
 
-Esta camada funciona como um atendente que recebe pedidos, busca as informações necessárias e entrega de volta. Ela oferece:
+A arquitetura foi projetada priorizando:
 
-- *GraphQL*: A interface principal, que permite fazer consultas flexíveis e receber exatamente os dados necessários
-- *REST*: Usada para casos específicos como login e upload de arquivos, onde a abordagem REST é mais simples
-- *Sistema de Segurança*: Verifica quem está fazendo cada pedido e se tem permissão para isso, usando o sistema ABAC que discutimos antes
+*Separação de Responsabilidades*: Cada camada possui escopo bem definido, facilitando manutenção e evolução independente dos componentes.
 
-*Camada de Interface (o que o usuário vê e interage)*:
+*Desacoplamento via APIs*: A comunicação entre camadas ocorre exclusivamente através de interfaces contratuais, permitindo substituição de implementações sem impacto em outras camadas.
 
-Esta é a parte visual, onde administradores e editores de conteúdo trabalham. Inclui:
+*Escalabilidade Horizontal*: As camadas podem escalar independentemente baseado na demanda específica de cada componente.
 
-- *Painel Administrativo*: Interface moderna e responsiva construída em SolidJS
-- *Sites dos Clientes*: Qualquer site ou aplicativo pode se conectar à API para consumir o conteúdo
+*Flexibilidade Tecnológica*: A camada de apresentação não está acoplada a nenhuma tecnologia específica, permitindo múltiplas implementações consumindo as mesmas APIs.
 
-=== Princípios de Design
+== Stack Tecnológico
 
-O sistema foi construído seguindo quatro princípios importantes:
+A seleção das tecnologias priorizou maturidade do ecossistema, performance e type safety.
 
-*Cada Parte Faz Uma Coisa*: Cada componente tem uma responsabilidade clara. O banco de dados apenas armazena, a API apenas comunica, a interface apenas apresenta. Isso torna mais fácil entender, consertar e melhorar cada parte.
+=== Camada de Backend
 
-*Partes Independentes*: As camadas conversam apenas através das APIs. Isso significa que você pode trocar ou atualizar uma parte sem quebrar as outras. É como ter tomadas padronizadas - você pode trocar qualquer aparelho desde que o plugue encaixe.
+*Linguagem com Tipagem Estática*: Escolhida pela adequação a operações I/O intensivas comuns em APIs. A tipagem estática reduz erros em tempo de execução e melhora a experiência de desenvolvimento.
 
-*Crescimento Inteligente*: Se muitas pessoas começam a acessar o site, você pode adicionar mais recursos apenas na parte visual. Se está criando muito conteúdo, aumenta apenas o backend. Cada parte cresce conforme sua necessidade específica.
+*Banco de Dados Relacional*: Selecionado pelos recursos avançados incluindo conformidade ACID, suporte nativo a JSON para dados semi-estruturados, sistema robusto de indexação e extensibilidade. A capacidade de trabalhar com dados relacionais e documentos simultaneamente elimina a necessidade de múltiplos sistemas de persistência.
 
-*Liberdade de Escolha*: Desenvolvedores podem usar qualquer tecnologia que preferirem para criar a interface. Quer fazer o site em React? Em Vue? Em Angular? Todos podem usar os mesmos dados do backend.
+*Sistema de Cache em Memória*: Utilizado como cache de alta performance para sessões e resultados de avaliações ABAC. A arquitetura em memória proporciona latências sub-milissegundo, essencial para operações frequentes de autorização.
 
-== Tecnologias Escolhidas e Por Quê
+*Camada de Acesso a Dados*: Implementada com segurança de tipos completa entre a linguagem de aplicação e SQL, mantendo controle fino sobre queries geradas e evitando overhead desnecessário.
 
-Cada tecnologia foi escolhida por um motivo específico, buscando o equilíbrio entre performance, facilidade de uso e confiabilidade.
+=== Camada de Frontend
 
-=== Backend (A Parte Invisível que Processa Tudo)
+*Tecnologia de Interface Moderna*: Selecionada por oferecer atualizações eficientes de interface, resultando em tamanho de aplicação reduzido e performance superior. A sintaxe declarativa facilita adoção por desenvolvedores.
 
-*Node.js com TypeScript*:
+=== APIs
 
-Node.js é como o motor do sistema, executando todo o código do servidor. Foi escolhido porque é muito eficiente para lidar com muitas requisições simultâneas - imagine um garçom que consegue atender várias mesas ao mesmo tempo.
+*GraphQL*: Implementado como interface principal permitindo consultas flexíveis e eliminando over-fetching. O sistema de tipos forte garante contratos explícitos entre cliente e servidor.
 
-TypeScript é uma "versão melhorada" de JavaScript que ajuda a evitar erros. É como ter um revisor que aponta possíveis problemas no código antes mesmo de executá-lo, tornando o desenvolvimento mais seguro e fácil de manter.
-
-*PostgreSQL (Banco de Dados Principal)*:
-
-Escolhido por ser extremamente confiável e poderoso. Três características importantes:
-- Guarda dados de forma segura seguindo regras rígidas (padrões ACID) que garantem que nada se perde ou corrompe
-- Consegue trabalhar tanto com dados estruturados (tabelas tradicionais) quanto com dados flexíveis (formato JSON)
-- Oferece recursos avançados de busca e indexação que tornam as consultas muito rápidas
-
-*Redis (Cache Rápido)*:
-
-Funciona como uma memória de acesso rápido. Guarda informações temporárias que precisam ser acessadas rapidamente, como:
-- Sessões de usuários logados (para não precisar verificar o banco de dados toda vez)
-- Resultados de verificações de permissão recentes
-- Qualquer dado que seja acessado frequentemente
-
-*Drizzle ORM*:
-
-É uma ferramenta que funciona como um tradutor entre o código TypeScript e o banco de dados PostgreSQL. Em vez de escrever comandos SQL complexos, você escreve em TypeScript de forma mais natural, e o Drizzle converte isso para comandos otimizados do banco de dados.
-
-=== Frontend (A Interface Visual)
-
-*SolidJS*:
-
-Escolhido para criar o painel administrativo por três motivos principais:
-- *Mais Rápido*: Atualiza apenas as partes da tela que realmente mudaram, sem redesenhar tudo
-- *Mais Leve*: O tamanho final do código é menor, fazendo o site carregar mais rápido
-- *Familiar*: Usa sintaxe JSX, conhecida por milhões de desenvolvedores que trabalham com React
-
-=== Comunicação e APIs
-
-*GraphQL*:
-
-A interface principal para buscar dados. Como explicamos antes, permite que cada cliente peça exatamente os dados que precisa, nem mais nem menos, em uma única requisição.
+*REST*: Mantido para operações específicas (autenticação e assets) onde a simplicidade do modelo request-response é mais adequada que a complexidade do GraphQL.
 
 === Segurança
 
-*Autenticação JWT com RSA*:
+*JWT com Criptografia Assimétrica*: Tokens assinados criptograficamente garantem autenticidade sem necessidade de estado no servidor, facilitando escalabilidade horizontal. O algoritmo assimétrico permite validação distribuída sem compartilhamento de segredos.
 
-JWT (JSON Web Tokens) são como crachás digitais. Quando você faz login, recebe um token que comprova sua identidade. A criptografia RSA garante que esse token não pode ser falsificado - funciona como um selo de autenticidade impossível de copiar.
+*Gerenciamento de Sessões*: TTL automático, renovação baseada em atividade e cache de atributos de autorização reduzem carga no banco de dados principal.
 
-*Sistema de Sessões com Redis*:
-
-Gerencia quanto tempo você fica logado no sistema. Características importantes:
-- Desconecta automaticamente após um tempo de inatividade (por segurança)
-- Pode estender automaticamente a sessão enquanto você está ativo
-- Armazena decisões de permissão recentes para não precisar recalcular toda vez
-
-*HTTPS/TLS (Conexão Criptografada)*:
-
-Toda comunicação entre seu navegador e o servidor é criptografada. É como enviar cartas em envelopes lacrados e invioláveis - ninguém consegue espiar o conteúdo no caminho.
+*Criptografia de Transporte*: Protocolos modernos garantindo confidencialidade e integridade de todas as comunicações cliente-servidor.
 
 
 == Modelagem do Banco de Dados
 
-O principal desafio na concepção do banco de dados é criar uma estrutura que suporte a definição dinâmica de tipos de conteúdo sem comprometer performance ou flexibilidade. A solução proposta utiliza uma abordagem híbrida que combina tabelas especializadas para tipos primitivos com armazenamento JSON para estruturas complexas.
+A modelagem de dados implementa estratégia híbrida combinando tabelas tipadas para primitivos com armazenamento JSON para estruturas complexas, conforme discutido no referencial teórico.
 
 === Entidades Principais
 
@@ -524,33 +469,27 @@ O principal desafio na concepção do banco de dados é criar uma estrutura que 
 
 === Estratégia de Armazenamento por Tipo
 
-O sistema implementa diferentes estratégias de armazenamento baseadas na natureza dos tipos de dados:
+Implementação da abordagem híbrida discutida no referencial teórico:
 
-*Tipos Primitivos* (text, boolean, number, date_time):
-Armazenados em tabelas dedicadas (`entry_texts`, `entry_booleans`, `entry_numbers`, `entry_datetimes`) para permitir indexação eficiente e consultas otimizadas. Esta abordagem garante performance superior para operações de busca e filtragem.
+*Tipos Primitivos* (text, boolean, number, date_time): Tabelas dedicadas (`entry_texts`, `entry_booleans`, `entry_numbers`, `entry_datetimes`) com índices para consultas otimizadas.
 
-*Tipo Typst* (typst_text):
-Armazenado em tabela especializada (`entry_typst_texts`) que mantém tanto o código Typst original (`raw`) quanto a versão renderizada (`rendered`), permitindo edição e visualização eficientes do conteúdo tipográfico.
+*Tipo Typst* (typst_text): Tabela especializada (`entry_typst_texts`) mantendo código fonte e versão renderizada.
 
-*Tipos Complexos* (text_list, number_list, json):
-Armazenados na tabela unificada `entry_json_data`, aproveitando as capacidades nativas do PostgreSQL para dados semi-estruturados. O campo `value_type` distingue entre diferentes estruturas JSON mantendo type safety a nível de aplicação.
+*Tipos Complexos* (text_list, number_list, json): Tabela unificada `entry_json_data` aproveitando suporte nativo do PostgreSQL a JSONB.
 
-*Rich Text*:
-Tabela `entry_rich_texts` com armazenamento triplo (raw + rendered + format) suportando múltiplos formatos (markdown, html, prosemirror) com sistema de renderização.
+*Rich Text*: Tabela `entry_rich_texts` com armazenamento triplo (raw + rendered + format) suportando markdown, HTML e ProseMirror.
 
-*Assets*:
-Sistema de assets com tabela `entry_assets` incluindo ordenação múltipla, metadados de acessibilidade (alt text, caption) e integração com upload de arquivos.
+*Assets*: Tabela `entry_assets` com ordenação múltipla e metadados de acessibilidade.
 
-*Relacionamentos*:
-Sistema `entry_relations` gerenciando relacionamentos entre entradas com suporte a consultas GraphQL de relacionamentos aninhados.
+*Relacionamentos*: Tabela `entry_relations` gerenciando relacionamentos com suporte a consultas aninhadas.
 
 === Diagrama Entidade-Relacionamento
 
 O diagrama ER apresentado na Figura 3.2 demonstra as principais entidades e seus relacionamentos:
 
 #figure(
-  image("diagramas/schema_database.png", width: 100%),
-  caption: [Esquema completo do banco de dados PostgreSQL com todas as tabelas e relacionamentos]
+  image("diagramas/database.png", width: 100%),
+  caption: [Esquema completo do banco de dados relacional com todas as tabelas e relacionamentos]
 ) <fig-database-schema>
 
 - Sistema de ownership tracking com 3 tipos de propriedade
@@ -587,7 +526,7 @@ O diagrama ER apresentado na Figura 3.2 demonstra as principais entidades e seus
 
 == Sistema de Controle de Acesso
 
-O sistema implementa um sistema ABAC enterprise-grade nativo ao banco de dados, representando uma evolução significativa sobre modelos RBAC tradicionais. Esta abordagem oferece políticas declarativas, cache de performance e auditoria completa.
+Implementação do modelo ABAC discutido no referencial teórico, com políticas declarativas armazenadas no banco de dados e motor de avaliação integrado.
 
 *Políticas ABAC* (`abac_policies`): Define políticas declarativas com efeito (ALLOW/DENY), prioridade para resolução de conflitos e conectores lógicos (AND/OR) para combinação de regras. Cada política especifica o tipo de recurso e ação que governa, com 15 ações granulares disponíveis.
 
@@ -631,40 +570,51 @@ A tabela `resource_ownerships` rastreia propriedade de recursos com três tipos:
 
 Este sistema permite políticas dinâmicas baseadas em propriedade com suporte a expiração temporal.
 
-*Cache Multi-Layer*: Sistema de cache com invalidação inteligente baseada em checksum de contexto e versões de políticas, proporcionando latência sub-milissegundo para avaliações frequentes.
+=== Otimizações e Características de Implementação
 
-*Índices Estratégicos*: 15+ índices específicos otimizam consultas por usuário, recurso, ação e tempo, garantindo performance escalável.
+*Performance*:
+- Cache multi-layer com invalidação baseada em checksum de contexto
+- 15+ índices estratégicos otimizando consultas ABAC
+- Métricas de tempo de execução para profiling
 
-*Métricas de Performance*: Cada avaliação inclui tempo de execução para identificação de políticas lentas e otimização contínua.
+*Resolução de Conflitos*:
+- Sistema de prioridade numérica para resolução determinística
+- Conectores lógicos AND/OR para combinação de regras
+- Arquitetura deny-by-default seguindo princípio de menor privilégio
 
-*Sistema de Prioridade*: Políticas possuem prioridade numérica para resolução determinística de conflitos entre ALLOW e DENY.
+Exemplo de política complexa implementável:
 
-*Conectores Lógicos*: Políticas podem usar AND (todas as regras devem ser verdadeiras) ou OR (qualquer regra verdadeira) para flexibilidade na definição de condições.
-
-*Deny-by-Default*: Sistema segue princípio de menor privilégio onde acesso é negado por padrão, requerindo políticas explícitas ALLOW.
-
-O sistema suporta políticas sofisticadas como:
-
-"ALLOW READ em campos com sensitivityLevel='PUBLIC' OR (sensitivityLevel='INTERNAL' AND subject.role IN ['editor', 'admin'] AND environment.currentTime BETWEEN 09:00-17:00) DENY se field.isPii=true AND NOT subject.hasPrivacyTraining"
-
-Esta política combina múltiplas dimensões de atributos para controle granular baseado em contexto dinâmico.
+```
+ALLOW READ ON fields WHERE
+  sensitivityLevel = 'PUBLIC' OR
+  (sensitivityLevel = 'INTERNAL' AND
+   subject.role IN ['editor', 'admin'] AND
+   environment.currentTime BETWEEN 09:00-17:00)
+DENY IF field.isPii = true AND NOT subject.hasPrivacyTraining
+```
 
 == APIs e Protocolos de Comunicação
 
-A API REST é projetada especificamente para dois casos de uso onde simplicidade e compatibilidade são prioritárias:
+O sistema oferece duas interfaces de comunicação complementares, cada uma otimizada para casos de uso específicos.
 
-*Autenticação* (`/auth`): Endpoints para login, logout, refresh de tokens JWT e recuperação de senha. Esta implementação REST garante compatibilidade ampla com diferentes clientes e simplicidade na integração.
+=== API REST
 
-*Gerenciamento de Assets* (`/assets`): Operações CRUD para arquivos multimídia, incluindo upload, download, streaming e metadados. A natureza binária dos assets e necessidades de streaming tornam REST mais apropriado que GraphQL.
+Implementada para operações onde simplicidade e compatibilidade são prioritárias:
 
-*Características Técnicas*:
-- Métodos HTTP apropriados: GET (leitura), POST (criação/upload), PUT/PATCH (atualização), DELETE (remoção)
-- Códigos de status consistentes: 200 (sucesso), 201 (criado), 400 (erro cliente), 401 (não autenticado), 403 (não autorizado), 404 (não encontrado), 500 (erro servidor)
-- Content-Type diversificado: multipart/form-data para uploads, application/json para metadados
+*Autenticação* (`/auth`): Login, logout, refresh de tokens e recuperação de senha.
 
-A implementação GraphQL serve como interface principal oferecendo flexibilidade superior para consultas complexas:
+*Assets* (`/assets`): Upload, download e streaming de arquivos multimídia. A natureza binária e necessidades de streaming justificam REST sobre GraphQL.
 
-*Esquema*: O esquema GraphQL foi desenvolvido para facilitar o uso do sistema, as queries e mutations são formuladas de modo que o usuario não precise fazer relações manualmente.
+*Convenções*:
+- Métodos HTTP semânticos (GET, POST, PUT/PATCH, DELETE)
+- Status codes consistentes (2xx sucesso, 4xx erro cliente, 5xx erro servidor)
+- Content-Type apropriado (multipart/form-data para uploads, application/json para metadados)
+
+=== API GraphQL
+
+Interface principal do sistema, oferecendo flexibilidade superior conforme discutido no referencial teórico.
+
+*Design do Esquema*: Queries e mutations estruturadas para eliminar necessidade de joins manuais pelo cliente.
 
 *Union Types para Flexibilidade*: Utilização de Union Types para representar diferentes tipos de campos (`FieldValue`), mantendo type safety para diferentes estruturas de dados:
 
@@ -673,84 +623,86 @@ union FieldValue = Text | TypstText | Asset | BooleanValue |
                    NumberValue | DateTime | RichText | Json | Relation
 ```
 
-*Sistema de Filtering Avançado*: Implementação de filtros específicos por tipo de dado:
-- Campos de texto: `contains`, `startsWith`, `endsWith`, `equals`
-- Campos numéricos: `gt`, `gte`, `lt`, `lte`, `equals`
-- Campos de data: `before`, `after`, `equals`
-- Campos booleanos: `equals`
+*Sistema de Filtering*: Filtros específicos por tipo implementando os operadores discutidos no referencial teórico:
+- Texto: `contains`, `startsWith`, `endsWith`, `equals`
+- Numérico: `gt`, `gte`, `lt`, `lte`, `equals`
+- Data: `before`, `after`, `equals`
+- Booleano: `equals`
 - Relacionamentos: `exists`, `in`, `notIn`
 
-*Resolvers Otimizados*: Implementação de resolvers que aplicam filtros diretamente no banco de dados através de consultas SQL otimizadas, evitando over-fetching.
+*Otimizações*:
+- Resolvers aplicam filtros diretamente no banco via SQL otimizado
+- Cursor-based pagination para datasets grandes
+- Ordenação multi-campo
 
-*Paginação e Ordenação*: Suporte nativo a cursor-based pagination e ordenação multi-campo para consultas eficientes de grandes datasets.
-
-*Exemplo de Query Complexa*: O sistema suporta consultas sofisticadas que combinam metadados de coleção com filtragem de conteúdo:
+Exemplo de query combinando metadados de coleção com filtragem de conteúdo:
 
 ```graphql
-query ($name: String!, $fieldName2: String!) {
+query ($name: String!, $fieldName: String!) {
   collection(name: $name) {
     name
-    fields {
-      name
-      dataType
-    }
+    fields { name dataType }
     entries {
       name
-      test_field: field(name: $fieldName2, filter: { text: { eq: "wow!" } }) {
-        ... on Text {
-          text
-        }
+      field(name: $fieldName, filter: { text: { eq: "value" } }) {
+        ... on Text { text }
       }
     }
   }
 }
 ```
 
-Esta query demonstra a capacidade de buscar uma coleção específica, listar seus campos e metadados, e simultaneamente filtrar entradas baseando-se no valor de campos específicos, tudo em uma única requisição otimizada.
-
-*Higher-Order Functions*: Sistema de proteção automática através de:
-- `withAuth`: HOF que protege resolvers automaticamente
-- `filterByPermission`: Função para filtragem ABAC de resultados
-- `requirePermission`: Middleware para verificação de permissões
-- `requireFieldPermission`: Sistema para controle field-level
-
-*GraphQL Error Handling*: Tratamento padronizado de erros de autenticação e autorização com códigos HTTP apropriados.
+*Integração com ABAC*:
+- Higher-order functions protegendo resolvers automaticamente
+- Filtragem de resultados baseada em permissões do usuário
+- Controle field-level impedindo acesso a campos restritos
+- Error handling padronizado para autenticação e autorização
 
 == Interface Administrativa
 
-A interface administrativa utiliza SolidJS, oferecendo arquitetura reativa moderna:
+Implementação utilizando tecnologia de interface moderna aproveitando as características discutidas no referencial teórico.
 
-*Reatividade Fine-Grained*: Atualizações cirúrgicas do DOM apenas nos elementos que efetivamente mudaram, eliminando reconciliação desnecessária.
+=== Características Técnicas
 
-*Bundle Size Otimizado*: Aplicação administrativa com tamanho reduzido comparado a frameworks tradicionais.
+*Arquitetura Reativa*: Atualizações eficientes de interface baseadas em mudanças de estado.
 
-*Type Safety Completa*: Integração TypeScript end-to-end garantindo consistência entre frontend e backend.
+*Segurança de Tipos*: Integração com tipagem estática end-to-end entre frontend e backend.
 
-*Schema Adaptativo*: Interface que se adapta automaticamente aos tipos de campos definidos nas coleções, oferecendo widgets específicos para cada tipo de dados.
+*Interface Adaptativa*: UI se adapta automaticamente aos schemas definidos, gerando formulários e widgets específicos por tipo de campo.
 
-*Dashboard Principal*: Interface central oferecendo visão geral das coleções, estatísticas de uso e navegação baseada em permissões ABAC.
+=== Módulos Principais
 
-*Editor de Coleções*: Interface para definição dinâmica de tipos de conteúdo com preview em tempo real e validação de schemas.
+*Dashboard*: Visão geral de coleções, estatísticas e navegação filtrada por permissões ABAC.
 
-*Editor de Entradas*: Interface completamente adaptativa que gera formulários baseados no schema da coleção, com widgets específicos e validação em tempo real.
+*Editor de Coleções*: Definição de tipos de conteúdo com validação em tempo real.
 
-*Gerenciador de Assets*: Sistema completo para upload, organização e metadados de arquivos multimídia, incluindo preview e campos de acessibilidade.
+*Editor de Entradas*: Formulários gerados dinamicamente baseados no schema da coleção.
 
-*Sistema de Permissões*: Interface administrativa para configuração granular de políticas de permissoes.
+*Gerenciador de Assets*: Upload e organização de mídias com metadados de acessibilidade.
+
+*Configuração de Permissões*: Interface para criação e gerenciamento de políticas ABAC.
 
 
 == Segurança e Performance
 
-*Autenticação por Nome de Usuário*: Sistema baseado nos campos `name` e `passwordHash` da tabela users, com status de conta controlado pelo enum `user_status`.
+=== Medidas de Segurança Implementadas
 
-*Sistema de Sessões Seguro*: Gerenciamento com TTL configurável, extensão automática e cache Redis para performance.
+*Autenticação*: Sistema baseado em credenciais (username/password) com hashing criptográfico seguro.
 
-*Validação Rigorosa*: Validação de inputs via JSON Schema, sanitização de dados e queries SQL seguras via Drizzle ORM.
+*Sessões*: Gerenciamento via sistema de cache com TTL configurável e renovação automática baseada em atividade.
 
-*Encryption at Rest*: Suporte a criptografia de campos sensíveis através do flag `isEncrypted`.
+*Validação*: Inputs validados via schemas estruturados, queries parametrizadas via camada de acesso a dados para prevenção de SQL injection.
 
-*Database Indexing*: Estratégia abrangente com 15+ índices específicos incluindo índices compostos para consultas ABAC.
+*Criptografia*: Suporte a encryption at rest para campos marcados como `isEncrypted`.
 
-*Connection Pooling*: Gerenciamento otimizado de conexões PostgreSQL.
+=== Otimizações de Performance
 
-*GraphQL Optimizations*: DataLoader para batching de consultas e prevenção do problema N+1.
+*Banco de Dados*:
+- 15+ índices estratégicos incluindo índices compostos para queries ABAC
+- Connection pooling otimizado
+- Prepared statements via camada de acesso a dados
+
+*GraphQL*:
+- DataLoader para batching e eliminação do problema N+1
+- Query complexity analysis
+- Caching de schemas
