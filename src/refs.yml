@@ -65,7 +65,7 @@ chen2002study:
 ferraiolo2004lightweight:
   type: conference
   title: A lightweight multimedia Web content management system
-  author: 
+  author:
     - Yong-gang, CAO.
     - et al.
   parent:
@@ -74,7 +74,7 @@ ferraiolo2004lightweight:
     publisher: IEEE
   date: 2004
   url: https://ieeexplore.ieee.org/document/1431441
-  note: "Acesso em: 10 set. 2025"
+  note: "Acesso em: 10 set. 2024"
 
 ferraiolo2003role:
   type: book
@@ -166,7 +166,7 @@ solidjs2024docs:
   author: SolidJS Team
   url: https://www.solidjs.com
   date: 2024
-  note: "Acesso em: 10 set. 2025"
+  note: "Acesso em: 10 set. 2024"
 
 strapi2024docs:
   type: web
@@ -174,7 +174,7 @@ strapi2024docs:
   author: Strapi Team
   url: https://docs.strapi.io
   date: 2024
-  note: "Acesso em: 10 set. 2025"
+  note: "Acesso em: 10 set. 2024"
 
 w3techs2024usage:
   type: web
@@ -182,7 +182,7 @@ w3techs2024usage:
   author: W3Techs
   url: https://w3techs.com/technologies/overview/content_management
   date: 2024
-  note: "Acesso em: 10 set. 2025"
+  note: "Acesso em: 10 set. 2024"
 
 wordpress2024docs:
   type: web
@@ -190,12 +190,12 @@ wordpress2024docs:
   author: WordPress Foundation
   url: https://developer.wordpress.org
   date: 2024
-  note: "Acesso em: 10 set. 2025"
+  note: "Acesso em: 10 set. 2024"
 
 zhang2008content:
   type: conference
   title: "Content management system: Comparative case study"
-  author: 
+  author:
     - Manish, Nath
     - Arora, Anuja
   parent:
@@ -204,7 +204,7 @@ zhang2008content:
     publisher: IEEE
   date: 2008
   url: https://ieeexplore.ieee.org/document/5552271
-  note: "Acesso em: 10 set. 2025"
+  note: "Acesso em: 10 set. 2024"
 
 # Referências específicas sobre ABAC
 
@@ -223,7 +223,7 @@ nist2014abac:
   number: "NIST Special Publication 800-162"
   date: 2014-01
   url: https://nvlpubs.nist.gov/nistpubs/specialpublications/nist.sp.800-162.pdf
-  note: "Acesso em: 16 set. 2025"
+  note: "Acesso em: 16 set. 2024"
 
 
 servos2017abac:
@@ -280,7 +280,7 @@ oasis2013xacml:
   organization: Organization for the Advancement of Structured Information Standards
   date: 2013-01
   url: https://docs.oasis-open.org/xacml/3.0/xacml-3.0-core-spec-os-en.html
-  note: "Acesso em: 16 set. 2025"
+  note: "Acesso em: 16 set. 2024"
 
 combiningpolicies2009:
   type: article
@@ -299,7 +299,7 @@ openpolicyagentcontributors2024opa:
   author: Open Policy Agent contributors
   url: https://www.openpolicyagent.org/
   date: 2024
-  note: "Acesso em: 16 set. 2025"
+  note: "Acesso em: 16 set. 2024"
 
 casbin2024docs:
   type: web
@@ -307,7 +307,7 @@ casbin2024docs:
   author: Casbin Team
   url: https://github.com/casbin/node-casbin
   date: 2024
-  note: "Acesso em: 16 set. 2025"
+  note: "Acesso em: 16 set. 2024"
 
 aws2024abac:
   type: web
@@ -315,7 +315,7 @@ aws2024abac:
   author: Amazon Web Services
   url: https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction_attribute-based-access-control.html
   date: 2024
-  note: "Acesso em: 16 set. 2025"
+  note: "Acesso em: 16 set. 2024"
 
 ranger2024docs:
   type: web
@@ -323,7 +323,7 @@ ranger2024docs:
   author: Apache Software Foundation
   url: https://ranger.apache.org/
   date: 2024
-  note: "Acesso em: 16 set. 2025"
+  note: "Acesso em: 16 set. 2024"
 
 
 researchgate2013abac:
@@ -352,7 +352,7 @@ jones2015jwt:
   number: "RFC 7519"
   date: 2015-05
   url: https://www.rfc-editor.org/info/rfc7519
-  note: "Acesso em: 12 out. 2025"
+  note: "Acesso em: 12 out. 2024"
 
 # Referências sobre CMS Headless e arquitetura
 
@@ -365,7 +365,7 @@ headless2021decoupled:
     title: International Journal of Innovative Research in Engineering & Multidisciplinary Physical Sciences
   date: 2021
   url: https://www.researchgate.net/publication/390066565_Headless_CMS_and_the_Decoupled_Frontend_Architecture
-  note: "Acesso em: 12 out. 2025"
+  note: "Acesso em: 12 out. 2024"
 
 contentful2024headless:
   type: web
@@ -373,7 +373,7 @@ contentful2024headless:
   author: Contentful
   url: https://www.contentful.com/headless-cms/
   date: 2024
-  note: "Acesso em: 12 out. 2025"
+  note: "Acesso em: 12 out. 2024"
 
 
 # Referências sobre GraphQL
@@ -384,7 +384,7 @@ graphql2015facebook:
   author: Facebook Engineering
   url: https://engineering.fb.com/2015/09/14/core-infra/graphql-a-data-query-language/
   date: 2015-09-14
-  note: "Acesso em: 12 out. 2025"
+  note: "Acesso em: 12 out. 2024"
 
 graphql2024official:
   type: web
@@ -392,7 +392,7 @@ graphql2024official:
   author: GraphQL Foundation
   url: https://graphql.org/
   date: 2024
-  note: "Acesso em: 12 out. 2025"
+  note: "Acesso em: 12 out. 2024"
 
 graphqlspec2025:
   type: web
@@ -421,7 +421,7 @@ nadkarni2007eav:
   date: 2007
   doi: 10.1016/j.ijmedinf.2006.09.023
   url: https://pmc.ncbi.nlm.nih.gov/articles/PMC2110957/
-  note: "Acesso em: 12 out. 2025"
+  note: "Acesso em: 12 out. 2024"
 
 batra2016eav:
   type: article
@@ -438,7 +438,7 @@ batra2016eav:
   date: 2017-12-28
   doi: 10.3390/info9010002
   url: https://www.mdpi.com/2078-2489/9/1/2
-  note: "Acesso em: 12 out. 2025"
+  note: "Acesso em: 12 out. 2024"
 
 # Referências sobre banco de dados e armazenamento
 
@@ -448,7 +448,7 @@ postgresql2024json:
   author: PostgreSQL Global Development Group
   url: https://www.postgresql.org/docs/current/datatype-json.html
   date: 2024
-  note: "Acesso em: 12 out. 2025"
+  note: "Acesso em: 12 out. 2024"
 
 mongodb2024bson:
   type: web
@@ -456,7 +456,7 @@ mongodb2024bson:
   author: MongoDB Inc.
   url: https://www.mongodb.com/json-and-bson
   date: 2024
-  note: "Acesso em: 12 out. 2025"
+  note: "Acesso em: 12 out. 2024"
 
 # Referências sobre frameworks e tecnologias frontend
 
@@ -466,7 +466,7 @@ react2024docs:
   author: Meta Open Source
   url: https://react.dev/
   date: 2024
-  note: "Acesso em: 12 out. 2025"
+  note: "Acesso em: 12 out. 2024"
 
 vue2024docs:
   type: web
@@ -474,7 +474,7 @@ vue2024docs:
   author: Vue.js Team
   url: https://vuejs.org/
   date: 2024
-  note: "Acesso em: 12 out. 2025"
+  note: "Acesso em: 12 out. 2024"
 
 svelte2024docs:
   type: web
@@ -482,7 +482,7 @@ svelte2024docs:
   author: Svelte Team
   url: https://svelte.dev/
   date: 2024
-  note: "Acesso em: 12 out. 2025"
+  note: "Acesso em: 12 out. 2024"
 
 # Referências sobre padrões de design
 

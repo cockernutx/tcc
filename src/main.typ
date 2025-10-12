@@ -78,7 +78,7 @@ Pense no CMS como um editor de documentos, similar ao Microsoft Word, mas para s
 
 Os CMS passaram por três fases importantes de evolução @chen2002study:
 #linebreak()
-*Primeira Geração - Sites Estáticos*: No início da internet, qualquer mudança em um site exigia que um programador alterasse o código manualmente. Era como ter que chamar um engenheiro toda vez que você quisesse mudar a cor de uma parede da sua casa @fielding2000architectural.
+*Primeira Geração - Sites Estáticos*: No início da internet, qualquer mudança em um site exigia que um programador alterasse o código manualmente. Era como ter que chamar um engenheiro toda vez que você quisesse mudar a cor de uma parede da sua casa @zhang2008content.
 #linebreak()
 *Segunda Geração - CMS Tradicionais*: Surgiram sistemas como WordPress e Joomla, que tornaram a criação de sites muito mais fácil @wordpress2024docs @joomla2024docs. Hoje, o WordPress é usado por mais de 40% de todos os sites do mundo @w3techs2024usage. Esses sistemas são como blocos de montar: você escolhe um tema visual pronto, instala algumas extensões, e tem um site funcionando.
 #linebreak()
@@ -146,7 +146,7 @@ Nem tudo são flores. A arquitetura _headless_ traz alguns desafios @contentful2
 
 Imagine que você vai a um restaurante e pede um prato específico. Com APIs REST tradicionais, é como se o garçom trouxesse a refeição completa mesmo que você só quisesse a salada. Ou então você precisasse fazer três pedidos diferentes para conseguir montar sua refeição completa - um pedido para o prato principal, outro para a bebida, outro para a sobremesa.
 #linebreak()
-Isso causa dois problemas principais @graphqlspec2025:
+Isso causa dois problemas principais @graphql2024official:
 1. *_Over-fetching_*: Receber mais dados do que você precisa (desperdício de internet e processamento)
 2. *_Under-fetching_*: Precisar fazer várias requisições separadas para conseguir todos os dados necessários (lentidão)
 
