@@ -80,7 +80,7 @@ Os CMS passaram por três fases importantes:
 
 *Primeira Geração - Sites Estáticos*: No início da internet, qualquer mudança em um site exigia que um programador alterasse o código manualmente. Era como ter que chamar um engenheiro toda vez que você quisesse mudar a cor de uma parede da sua casa.
 
-*Segunda Geração - CMS Tradicionais*: Surgiram sistemas como WordPress e Joomla, que tornaram a criação de sites muito mais fácil. Hoje, o WordPress é usado por mais de 40% de todos os sites do mundo. Esses sistemas são como blocos de montar: você escolhe um tema visual pronto, instala algumas extensões, e tem um site funcionando.
+*Segunda Geração - CMS Tradicionais*: Surgiram sistemas como WordPress e Joomla, que tornaram a criação de sites muito mais fácil. Hoje, o WordPress é usado por mais de 40% de todos os sites do mundo @w3techs2024usage. Esses sistemas são como blocos de montar: você escolhe um tema visual pronto, instala algumas extensões, e tem um site funcionando.
 
 *Terceira Geração - CMS Headless (Modernos)*: É a fase atual, onde o sistema separa completamente o gerenciamento do conteúdo da apresentação visual. Isso dá muito mais liberdade para os desenvolvedores criarem diferentes tipos de interfaces.
 
@@ -108,14 +108,14 @@ Hoje existem três categorias principais de CMS:
 
 === O Sistema Tradicional: RBAC (Controle Baseado em Papéis)
 
-Imagine uma empresa onde existem diferentes cargos: gerente, editor e visitante. O sistema RBAC (sigla em inglês para Role-Based Access Control, ou "Controle de Acesso Baseado em Papéis") funciona exatamente assim - você atribui um "papel" ou "cargo" para cada usuário, e esse papel define o que a pessoa pode ou não fazer.
+Imagine uma empresa onde existem diferentes cargos: gerente, editor e visitante. O sistema RBAC (sigla em inglês para Role-Based Access Control, ou "Controle de Acesso Baseado em Papéis") funciona exatamente assim - você atribui um "papel" ou "cargo" para cada usuário, e esse papel define o que a pessoa pode ou não fazer @sandhu1996role.
 
 Por exemplo:
 - Um *Gerente* pode criar, editar e excluir qualquer conteúdo
 - Um *Editor* pode criar e editar, mas não excluir
 - Um *Visitante* pode apenas visualizar
 
-Esse sistema funcionou bem por muitos anos e ainda é amplamente usado. No entanto, ele tem três problemas principais:
+Esse sistema funcionou bem por muitos anos e ainda é amplamente usado @ferraiolo2003role. No entanto, ele tem três problemas principais que limitam sua aplicabilidade em sistemas modernos :
 
 *Explosão de Papéis*: Em empresas grandes, você acaba precisando criar muitos papéis diferentes. Por exemplo: "Editor de Notícias", "Editor de Esportes", "Editor de Tecnologia", "Editor Sênior de Notícias"... A lista cresce rapidamente e fica difícil de gerenciar.
 
@@ -125,9 +125,9 @@ Esse sistema funcionou bem por muitos anos e ainda é amplamente usado. No entan
 
 === O Sistema Moderno: ABAC (Controle Baseado em Atributos)
 
-O ABAC (Attribute-Based Access Control, ou "Controle de Acesso Baseado em Atributos") é uma evolução que resolve esses problemas. Em vez de simplesmente olhar o "cargo" da pessoa, o sistema analisa várias características ou "atributos" antes de decidir se permite ou não uma ação.
+O ABAC (Attribute-Based Access Control, ou "Controle de Acesso Baseado em Atributos") é uma evolução que resolve esses problemas @nist2014abac. Em vez de simplesmente olhar o "cargo" da pessoa, o sistema analisa várias características ou "atributos" antes de decidir se permite ou não uma ação.
 
-O ABAC considera quatro tipos de informação:
+O ABAC considera quatro tipos de informação @servos2017abac:
 
 1. *Atributos da Pessoa*: Quem é o usuário (seu ID, cargo, departamento, há quanto tempo trabalha na empresa)
 2. *Atributos do Conteúdo*: O que está sendo acessado (tipo de documento, quem criou, nível de confidencialidade, data de criação)
@@ -142,19 +142,19 @@ Essa regra seria extremamente difícil (ou impossível) de implementar com o sis
 
 === Como o ABAC Funciona
 
-O sistema ABAC possui quatro componentes principais que trabalham juntos:
+O sistema ABAC possui quatro componentes principais que trabalham juntos @nist2014abac:
 
-*Ponto de Decisão (PDP)*: É como um juiz que analisa as regras e decide se permite ou nega o acesso. Ele recebe informações sobre quem está tentando fazer o quê, consulta as políticas definidas e dá um veredicto: "permitido" ou "negado".
+*Ponto de Decisão (PDP - Policy Decision Point)*: É como um juiz que analisa as regras e decide se permite ou nega o acesso. Ele recebe informações sobre quem está tentando fazer o quê, consulta as políticas definidas e dá um veredicto: "permitido" ou "negado".
 
-*Ponto de Aplicação (PEP)*: É como um guarda de segurança que intercepta toda tentativa de acesso. Quando alguém tenta fazer algo, o PEP para a requisição e pergunta ao PDP se pode permitir. Só depois da aprovação é que a ação acontece.
+*Ponto de Aplicação (PEP - Policy Enforcement Point)*: É como um guarda de segurança que intercepta toda tentativa de acesso. Quando alguém tenta fazer algo, o PEP para a requisição e pergunta ao PDP se pode permitir. Só depois da aprovação é que a ação acontece.
 
-*Ponto de Informação (PIP)*: É como um banco de dados de informações. Quando o PDP precisa saber se o usuário pertence a determinado departamento ou se hoje é dia útil, ele busca essas informações no PIP.
+*Ponto de Informação (PIP - Policy Information Point)*: É como um banco de dados de informações. Quando o PDP precisa saber se o usuário pertence a determinado departamento ou se hoje é dia útil, ele busca essas informações no PIP.
 
-*Ponto de Administração (PAP)*: É a interface onde os administradores criam e gerenciam as regras de acesso. Funciona como um painel de controle para definir quem pode fazer o quê e em que situação.
+*Ponto de Administração (PAP - Policy Administration Point)*: É a interface onde os administradores criam e gerenciam as regras de acesso. Funciona como um painel de controle para definir quem pode fazer o quê e em que situação.
 
 === Por Que o ABAC é Melhor para Sistemas Modernos
 
-O ABAC oferece quatro vantagens principais:
+O ABAC oferece quatro vantagens principais sobre modelos tradicionais @researchgate2013abac:
 
 *Mais Expressivo*: Permite criar regras complexas e inteligentes em linguagem quase natural, considerando múltiplos fatores ao mesmo tempo.
 
@@ -163,18 +163,6 @@ O ABAC oferece quatro vantagens principais:
 *Mais Granular*: Permite controlar o acesso em nível muito detalhado, até mesmo campo por campo em um formulário. Essencial para sistemas de gerenciamento de conteúdo onde diferentes informações têm diferentes níveis de sensibilidade.
 
 *Mais Contextual*: Leva em conta a situação em que o acesso está acontecendo - horário, local, dispositivo - criando um sistema de segurança mais inteligente e adaptável.
-
-=== Aplicações Práticas do ABAC em Sistemas de Conteúdo
-
-Para sistemas de gerenciamento de conteúdo especificamente, o ABAC traz benefícios muito úteis:
-
-*Controle de Horário de Publicação*: Você pode criar regras como "Artigos só podem ser publicados durante horário comercial e apenas por editores seniores". Isso evita publicações acidentais fora de hora.
-
-*Personalização por Perfil*: Diferentes grupos de usuários podem ver conteúdos diferentes automaticamente, sem precisar criar versões separadas do sistema.
-
-*Trabalho em Equipe por Projeto*: Quando alguém é adicionado a um projeto, ganha acesso automaticamente a todos os conteúdos relacionados. Quando sai do projeto, perde o acesso automaticamente.
-
-*Conformidade com Leis de Privacidade*: Regulamentos como a LGPD (Lei Geral de Proteção de Dados) exigem controles específicos sobre dados pessoais. O ABAC permite criar essas proteções de forma automática e auditável.
 
 == Arquitetura Headless: Separando a "Cabeça" do "Corpo"
 
@@ -190,7 +178,7 @@ Antes de entender a arquitetura headless, é importante conhecer dois conceitos 
 
 Imagine que um site tradicional é como um boneco de ação: a cabeça (a parte visual que as pessoas veem) está permanentemente grudada no corpo (o banco de dados e a lógica). Se você quiser trocar apenas a cabeça, precisa desmontar tudo.
 
-Um CMS Headless é diferente: a "cabeça" (frontend - a interface visual) está completamente separada do "corpo" (backend - onde os dados ficam). Eles conversam através de uma ponte chamada API (Interface de Programação de Aplicações). É como ter peças de LEGO que se encaixam mas podem ser trocadas independentemente.
+Um CMS Headless é diferente: a "cabeça" (frontend - a interface visual) está completamente separada do "corpo" (backend - onde os dados ficam) @headless2021decoupled. Eles conversam através de uma ponte chamada API (Interface de Programação de Aplicações). É como ter peças de LEGO que se encaixam mas podem ser trocadas independentemente.
 
 === API-First: Construindo Pela Ponte de Comunicação
 
@@ -224,13 +212,13 @@ Nem tudo são flores. A arquitetura headless traz alguns desafios:
 
 Imagine que você vai a um restaurante e pede um prato específico. Com APIs REST tradicionais, é como se o garçom trouxesse a refeição completa mesmo que você só quisesse a salada. Ou então você precisasse fazer três pedidos diferentes para conseguir montar sua refeição completa - um pedido para o prato principal, outro para a bebida, outro para a sobremesa.
 
-Isso causa dois problemas principais:
+Isso causa dois problemas principais @graphqlspec2025:
 1. *Over-fetching*: Receber mais dados do que você precisa (desperdício de internet e processamento)
 2. *Under-fetching*: Precisar fazer várias requisições separadas para conseguir todos os dados necessários (lentidão)
 
 === Como o GraphQL Resolve Isso
 
-O GraphQL, criado pelo Facebook em 2015, funciona como um cardápio inteligente. Você diz exatamente o que quer, na quantidade que quer, e recebe apenas isso - tudo de uma vez só.
+O GraphQL, criado pelo Facebook em 2012 e lançado publicamente em 2015 @graphql2015facebook, funciona como um cardápio inteligente. Você diz exatamente o que quer, na quantidade que quer, e recebe apenas isso - tudo de uma vez só.
 
 Com GraphQL, você faz uma única pergunta detalhada e recebe exatamente o que pediu. É como dizer ao garçom: "Quero o frango grelhado, mas só a carne e o molho, sem os legumes. E também quero suco de laranja sem gelo." E receber exatamente isso.
 
@@ -356,13 +344,11 @@ Algoritmos de combinação como `deny-overrides` e `permit-overrides` resolvem c
 
 A literatura identifica vulnerabilidades específicas do ABAC que exigem mitigação cuidadosa:
 
-*Attribute Poisoning*: Atacantes manipulam atributos de entrada para obter acesso não autorizado. @avatier2024security demonstra mitigação através de verificação criptográfica de asserções e validação em tempo real.
+*Attribute Poisoning*: Atacantes manipulam atributos de entrada para obter acesso não autorizado.
 
 *Inference Attacks*: Exploração de padrões comportamentais para inferir regras de políticas. Defendido por limitação da visibilidade de regras aplicáveis e obfuscação de decisões.
 
 *Policy Conflicts*: Múltiplas políticas podem produzir decisões conflitantes. @oasis2013xacml especifica algoritmos formais para resolução, enquanto @combiningpolicies2009 analisa teoria e prática de combinação de políticas.
-
-Benchmarks de performance mostram engines XACML modernos avaliando 10.000 requests em ~10 milissegundos @performance2024abac. Técnicas de otimização incluem:
 
 *Smart Mask Ordering*: Reordenação de avaliação de atributos por probabilidade de decisão, resultando em 89% de melhoria de performance.
 
@@ -376,7 +362,7 @@ Para entender melhor o que este projeto oferece, vamos comparar com outros siste
 
 === WordPress: O Gigante Tradicional
 
-O WordPress é o sistema de gerenciamento de conteúdo mais popular do mundo, usado por mais de 40% de todos os sites. Ele representa o modelo tradicional onde tudo vem em um pacote único.
+O WordPress é o sistema de gerenciamento de conteúdo mais popular do mundo, usado por mais de 40% de todos os sites @w3techs2024usage. Ele representa o modelo tradicional onde tudo vem em um pacote único @wordpress2024docs.
 
 *Pontos Fortes*: Fácil de usar, tem milhares de temas e plugins prontos, grande comunidade de suporte.
 
@@ -388,7 +374,7 @@ O Joomla é uma alternativa ao WordPress que oferece controle de usuários e per
 
 === Strapi: O Principal Concorrente Headless
 
-O Strapi é o CMS headless open-source (código aberto) mais conhecido atualmente. Ele compartilha várias ideias com este projeto:
+O Strapi é o CMS headless open-source (código aberto) mais conhecido atualmente @strapi2024docs. Ele compartilha várias ideias com este projeto:
 
 *Semelhanças*:
 - Permite criar coleções de conteúdo personalizadas
@@ -398,25 +384,15 @@ O Strapi é o CMS headless open-source (código aberto) mais conhecido atualment
 
 *Diferenças Importantes*:
 
-*Controle de Permissões*: O Strapi usa apenas o sistema tradicional RBAC (controle por papéis), que só permite definir permissões por tipo de conteúdo inteiro. Este projeto usa ABAC, permitindo controle muito mais fino - até mesmo por campo individual e considerando o contexto (horário, localização, etc.).
+*Controle de Permissões*: O Strapi usa apenas o sistema tradicional RBAC (controle por papéis) @strapi2024docs, que só permite definir permissões por tipo de conteúdo inteiro. Este projeto usa ABAC, permitindo controle muito mais fino - até mesmo por campo individual e considerando o contexto (horário, localização, etc.).
 
 *Organização dos Dados*: Este projeto usa uma estratégia híbrida que organiza os dados de forma mais otimizada dependendo do tipo de informação, resultando em consultas mais rápidas.
 
 *Regras Contextuais*: O Strapi não consegue criar regras como "só pode publicar durante horário comercial" ou "só pode acessar deste local". Este projeto implementa essas capacidades através do ABAC.
 
-=== Casos de Uso no Mundo Real
-
-Várias organizações grandes já usam sistemas com ABAC:
-
-*Plataformas Educacionais*: Universidades usam ABAC para controlar quem pode acessar materiais de diferentes cursos, considerando matriculação, período letivo e outras variáveis.
-
-*Gerenciadores de Conteúdo Corporativo*: Empresas como Adobe implementam controle baseado em metadados, aplicando automaticamente regras por departamento, região geográfica e nível de confidencialidade.
-
-*Serviços de Streaming*: A Netflix utiliza sistemas de controle de acesso avançados para gerenciar permissões em sua arquitetura de microserviços de alta performance.
-
 == Tecnologias de Interface Moderna
 
-As tecnologias de interface modernas representam uma evolução significativa no desenvolvimento de aplicações web, oferecendo diferentes abordagens para gerenciamento de estado e atualização de interfaces de usuário.
+As tecnologias de interface modernas representam uma evolução significativa no desenvolvimento de aplicações web, oferecendo diferentes abordagens para gerenciamento de estado e atualização de interfaces de usuário. Frameworks modernos como React, Vue, Svelte e SolidJS utilizam programação reativa e virtual DOM (ou compilação direta) para otimizar atualizações de interface @solidjs2024docs.
 
 Para aplicações de gerenciamento de conteúdo, as características das tecnologias de interface modernas oferecem vantagens específicas:
 

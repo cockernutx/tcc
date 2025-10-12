@@ -33,6 +33,19 @@ Criar websites interativos com backend representa um dos maiores desafios no des
 └── CLAUDE.md                       # Este arquivo
 ```
 
+## Capitulos
+
+O capitulo um serve como introdução ao projeto.
+O capitulo dois serve como referencial teorico, todas as definições de conceitos devem estar aqui. Não se pode adicionar questões de design no capitulo 2.
+O capitulo três serve para adicionarmos conceitos proprios e elaborar sobre o design do sistema.
+
+## Referencias
+
+Todas as definições de conceitos e afirmações devem conter referencias.
+Caso não haja referencias o suficientes no projeto avise o usuario.
+
+Referencias devem vir de fontes confiaveis, então nada de blogs ou websites de empresas sem projetos open source e auditaveis.
+
 ## Componentes Principais
 
 ### 1. Documento Acadêmico

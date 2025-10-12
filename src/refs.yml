@@ -336,22 +336,6 @@ combiningpolicies2009:
   date: 2009
   doi: 10.3233/JCS-2009-0340
 
-axiomatics2019four:
-  type: web
-  title: "Four Role-based Access Control (RBAC) Limitations and How to Fix Them"
-  author: Axiomatics
-  url: https://axiomatics.com/news/press-releases/four-role-based-access-control-rbac-limitations-and-how-to-fix-them
-  date: 2019
-  note: "Acesso em: 16 set. 2025"
-
-splunk2024rbacvs:
-  type: web
-  title: "RBAC vs. ABAC: Role-Based & Attribute-Based Access Control Compared"
-  author: Splunk
-  url: https://www.splunk.com/en_us/blog/learn/rbac-vs-abac.html
-  date: 2024
-  note: "Acesso em: 16 set. 2025"
-
 styra2024opa:
   type: web
   title: "Open Policy Agent: Policy-based control for cloud native environments"
@@ -384,85 +368,6 @@ ranger2024docs:
   date: 2024
   note: "Acesso em: 16 set. 2025"
 
-avatier2024security:
-  type: web
-  title: "The ABAC Security Arms Race: Staying Ahead of Hackers"
-  author: Avatier
-  url: https://www.avatier.com/blog/hackers-trying-to-bypass-attribute/
-  date: 2024
-  note: "Acesso em: 16 set. 2025"
-
-performance2024abac:
-  type: web
-  title: "ABAC Policy Performance Benchmarks: 10,000 Requests in 10 Milliseconds"
-  author: NextLabs
-  url: https://www.nextlabs.com/products/application-enforcer/abac/
-  date: 2024
-  note: "Acesso em: 16 set. 2025"
-
-2u2024case:
-  type: web
-  title: "2U Education Platform: GraphQL-native ABAC Implementation Case Study"
-  author: 2U Inc.
-  url: https://hygraph.com/case-studies/2u
-  date: 2024
-  note: "Acesso em: 16 set. 2025"
-
-adobe2024abac:
-  type: web
-  title: "Attribute-based access control in Adobe Experience Manager"
-  author: Adobe
-  url: https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/assets/content-hub/attribute-based-access-control
-  date: 2024
-  note: "Acesso em: 16 set. 2025"
-
-netflix2024opa:
-  type: web
-  title: "Policy-based Access Control at Netflix Scale"
-  author: Netflix Technology Blog
-  url: https://netflixtechblog.com/how-netflix-is-solving-authorization-across-their-cloud/
-  date: 2024
-  note: "Acesso em: 16 set. 2025"
-
-permify2024abacvs:
-  type: web
-  title: "ABAC vs RBAC: Exploring Strengths and Weaknesses"
-  author: Permify
-  url: https://permify.co/post/abac-vs-rbac/
-  date: 2024
-  note: "Acesso em: 16 set. 2025"
-
-knostic2024rbacvs:
-  type: web
-  title: "RBAC vs. ABAC: Differences, Use Cases, Migration Strategy"
-  author: Knostic
-  url: https://www.knostic.ai/blog/role-based-vs-attribute-based-access-control
-  date: 2024
-  note: "Acesso em: 16 set. 2025"
-
-frontegg2024abac:
-  type: web
-  title: "ABAC (Attribute-Based Access Control): Guide and Examples"
-  author: Frontegg
-  url: https://frontegg.com/guides/abac
-  date: 2024
-  note: "Acesso em: 16 set. 2025"
-
-stytch2024abac:
-  type: web
-  title: "What is attribute-based access control (ABAC)"
-  author: Stytch
-  url: https://stytch.com/blog/what-is-abac/
-  date: 2024
-  note: "Acesso em: 16 set. 2025"
-
-netwrix2024abac:
-  type: web
-  title: "The Complete Guide to Attribute-Based Access Control (ABAC)"
-  author: Netwrix
-  url: https://blog.netwrix.com/attribute-based-access-control-abac
-  date: 2024
-  note: "Acesso em: 16 set. 2025"
 
 researchgate2013abac:
   type: article
@@ -491,4 +396,91 @@ jones2015jwt:
   number: "RFC 7519"
   date: 2015-05
   url: https://www.rfc-editor.org/info/rfc7519
+  note: "Acesso em: 12 out. 2025"
+
+# Referências sobre CMS Headless e arquitetura
+
+headless2021decoupled:
+  type: article
+  title: "Headless CMS and the Decoupled Frontend Architecture"
+  author: ResearchGate
+  parent:
+    type: periodical
+    title: International Journal of Innovative Research in Engineering & Multidisciplinary Physical Sciences
+  date: 2021
+  url: https://www.researchgate.net/publication/390066565_Headless_CMS_and_the_Decoupled_Frontend_Architecture
+  note: "Acesso em: 12 out. 2025"
+
+contentful2024headless:
+  type: web
+  title: "Headless CMS explained"
+  author: Contentful
+  url: https://www.contentful.com/headless-cms/
+  date: 2024
+  note: "Acesso em: 12 out. 2025"
+
+
+# Referências sobre GraphQL
+
+graphql2015facebook:
+  type: web
+  title: "GraphQL: A data query language"
+  author: Facebook Engineering
+  url: https://engineering.fb.com/2015/09/14/core-infra/graphql-a-data-query-language/
+  date: 2015-09-14
+  note: "Acesso em: 12 out. 2025"
+
+graphql2024official:
+  type: web
+  title: "GraphQL | A query language for your API"
+  author: GraphQL Foundation
+  url: https://graphql.org/
+  date: 2024
+  note: "Acesso em: 12 out. 2025"
+
+graphqlspec2025:
+  type: web
+  title: "Graphql Spec"
+  author: Hygraph
+  url: https://spec.graphql.org/September2025/
+  date: 2025
+  note: "Acesso em: 12 out. 2025"
+
+# Referências sobre padrão EAV
+
+nadkarni2007eav:
+  type: article
+  title: "Guidelines for the Effective Use of Entity-Attribute-Value Modeling for Biomedical Databases"
+  author:
+    - Nadkarni, Prakash M.
+    - Marenco, Luis
+    - Chen, Ranjit
+    - Skoufos, Emmanuel
+    - Shepherd, Gordon
+    - Miller, Perry
+  parent:
+    type: periodical
+    title: International Journal of Medical Informatics
+    volume: 76
+    issue: 11-12
+  page-range: 769-779
+  date: 2007
+  doi: 10.1016/j.ijmedinf.2006.09.023
+  url: https://pmc.ncbi.nlm.nih.gov/articles/PMC2110957/
+  note: "Acesso em: 12 out. 2025"
+
+dinu2016eav:
+  type: article
+  title: "Entity Attribute Value Style Modeling Approach for Archetype Based Data"
+  author:
+    - Dinu, Valentin
+    - Nadkarni, Prakash
+  parent:
+    type: periodical
+    title: MDPI Information
+    volume: 9
+    issue: 1
+  date: 2017-12-28
+  doi: 10.3390/info9010002
+  url: https://www.mdpi.com/2078-2489/9/1/2
   note: "Acesso em: 12 out. 2025"
