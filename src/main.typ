@@ -36,17 +36,29 @@ Desenvolver um sistema de gerenciamento de conteúdo headless (CMS Headless) que
 
 == Metodologia
 
-O projeto será desenvolvido utilizando metodologia ágil com ciclos iterativos de desenvolvimento. A implementação seguirá uma abordagem em camadas, iniciando pela infraestrutura de dados e progredindo até a interface de usuário.
+Este trabalho adota uma abordagem de pesquisa aplicada, combinando fundamentação teórica com desenvolvimento prático de um protótipo funcional. A metodologia está organizada em três etapas complementares:
 
-*Fase 1 - Fundação*: Implementação da arquitetura do banco de dados e sistema de autenticação, estabelecendo a base para as demais funcionalidades.
+=== Etapa 1: Pesquisa e Fundamentação Teórica
 
-*Fase 2 - Core*: Desenvolvimento das funcionalidades principais de gerenciamento de coleções e entradas de conteúdo, incluindo o sistema ABAC para controle de acesso.
+Revisão bibliográfica de fontes acadêmicas e técnicas sobre CMS, sistemas de controle de acesso (RBAC e ABAC), arquiteturas web modernas e APIs. Análise comparativa de sistemas existentes para identificar padrões e oportunidades de inovação. Especificação dos requisitos funcionais e não-funcionais do sistema.
 
-*Fase 3 - APIs*: Implementação das camadas de comunicação REST e GraphQL com seus respectivos sistemas de resolução e otimização.
+=== Etapa 2: Design e Modelagem
 
-*Fase 4 - Interface*: Desenvolvimento do painel administrativo com interface adaptativa baseada nos schemas definidos.
+Modelagem do banco de dados relacional com suporte a schemas dinâmicos. Definição da arquitetura em camadas e especificação das interfaces REST e GraphQL. Projeto do sistema ABAC com suas políticas e regras de autorização.
 
-*Fase 5 - Validação*: Testes de funcionalidade, performance e segurança, seguidos de ajustes e otimizações.
+=== Etapa 3: Implementação e Validação
+
+Desenvolvimento incremental do protótipo em cinco fases:
+
+*Fase 1 - Fundação*: Implementação da infraestrutura base (banco de dados, autenticação e estruturas para schemas dinâmicos).
+
+*Fase 2 - Core*: Desenvolvimento das funcionalidades centrais de gerenciamento de coleções e entradas, incluindo o sistema ABAC.
+
+*Fase 3 - APIs*: Construção das camadas REST e GraphQL com validação e otimização de consultas.
+
+*Fase 4 - Interface*: Desenvolvimento do painel administrativo com formulários dinâmicos baseados nos schemas.
+
+*Fase 5 - Validação*: Testes funcionais, de performance e segurança, seguidos de ajustes baseados nos resultados.
 
 // ================================
 // CAPÍTULO 2 - REFERENCIAL TEÓRICO
@@ -166,11 +178,19 @@ Para sistemas de gerenciamento de conteúdo especificamente, o ABAC traz benefí
 
 == Arquitetura Headless: Separando a "Cabeça" do "Corpo"
 
+=== Frontend e Backend: As Duas Camadas Principais
+
+Antes de entender a arquitetura headless, é importante conhecer dois conceitos fundamentais da arquitetura web @fielding2000architectural:
+
+*Backend (Retaguarda)*: É a parte "invisível" do sistema que fica no servidor. Inclui o banco de dados onde as informações são armazenadas, a lógica de negócios que processa os dados, e o sistema de segurança que controla quem pode acessar o quê. É como os bastidores de um teatro - o público não vê, mas é onde todo o trabalho acontece.
+
+*Frontend (Interface)*: É a parte visual que o usuário vê e interage - a interface gráfica, os botões, formulários e menus. Executa no navegador do usuário (Chrome, Firefox, Safari) e se comunica com o backend para buscar ou enviar dados. É como o palco do teatro onde a apresentação acontece.
+
 === O Que É um CMS Headless
 
 Imagine que um site tradicional é como um boneco de ação: a cabeça (a parte visual que as pessoas veem) está permanentemente grudada no corpo (o banco de dados e a lógica). Se você quiser trocar apenas a cabeça, precisa desmontar tudo.
 
-Um CMS Headless é diferente: a "cabeça" (frontend - a parte visual) está completamente separada do "corpo" (backend - onde os dados ficam). Eles conversam através de uma ponte chamada API (Interface de Programação de Aplicações). É como ter peças de LEGO que se encaixam mas podem ser trocadas independentemente.
+Um CMS Headless é diferente: a "cabeça" (frontend - a interface visual) está completamente separada do "corpo" (backend - onde os dados ficam). Eles conversam através de uma ponte chamada API (Interface de Programação de Aplicações). É como ter peças de LEGO que se encaixam mas podem ser trocadas independentemente.
 
 === API-First: Construindo Pela Ponte de Comunicação
 
@@ -222,6 +242,16 @@ Com GraphQL, você faz uma única pergunta detalhada e recebe exatamente o que p
 
 *Consultas Flexíveis*: Você monta sua consulta pedindo exatamente os campos que precisa. Quer apenas o título e a data de um artigo? Peça só isso. Quer o artigo completo com autor e comentários? Também pode pedir tudo de uma vez.
 
+=== Operações do GraphQL
+
+O GraphQL trabalha com três tipos de operações principais @banks2018learning:
+
+*Queries (Consultas)*: São operações de leitura de dados. Quando você quer buscar informações do sistema sem modificar nada, usa uma query. É como fazer uma pergunta ao banco de dados: "Me mostre todos os artigos publicados hoje" ou "Qual o nome do autor deste post?". As queries são somente leitura e nunca alteram dados.
+
+*Mutations (Mutações)*: São operações que modificam dados. Quando você precisa criar, atualizar ou deletar informações, usa uma mutation. É como dar um comando de ação: "Crie um novo artigo", "Atualize o título deste post" ou "Delete este comentário". As mutations sempre retornam os dados modificados para você confirmar a mudança.
+
+*Resolvers (Resolutores)*: São as funções que realmente executam o trabalho de buscar ou modificar os dados. Quando você faz uma query ou mutation, o resolver é quem vai no banco de dados, pega as informações necessárias e retorna o resultado. É como o cozinheiro que prepara seu pedido na cozinha - você não o vê trabalhando, mas ele é essencial para atender sua requisição.
+
 === GraphQL em Sistemas de Conteúdo
 
 Para sistemas de gerenciamento de conteúdo, o GraphQL é especialmente útil porque:
@@ -235,9 +265,19 @@ Para sistemas de gerenciamento de conteúdo, o GraphQL é especialmente útil po
 
 *Performance Otimizada*: O sistema é inteligente o suficiente para transformar sua consulta GraphQL em comandos otimizados para o banco de dados, buscando apenas o necessário e filtrando direto na fonte.
 
+== Conceitos Técnicos Fundamentais
+
+Antes de prosseguir com conceitos mais avançados, é importante definir alguns termos técnicos que serão utilizados ao longo deste trabalho:
+
+*Schema (Esquema)*: É como um "projeto" ou "planta" que define a estrutura dos dados. Assim como uma planta arquitetônica mostra onde ficam os quartos e banheiros de uma casa, um schema define quais campos existem em um tipo de conteúdo, que tipo de informação cada campo aceita (texto, número, data), e quais campos são obrigatórios. Em sistemas de banco de dados, o schema garante que os dados sejam armazenados de forma organizada e consistente @silberschatz2018database.
+
+*Cache (Memória Temporária)*: É um sistema de armazenamento temporário de alta velocidade. Funciona como ter os itens mais usados sempre à mão, em vez de buscar no armário toda vez. Quando uma informação é solicitada frequentemente, o sistema a guarda no cache para acessá-la muito mais rapidamente nas próximas vezes. Isso melhora drasticamente a velocidade do sistema, pois evita consultas repetidas ao banco de dados principal @kleppmann2017designing.
+
+*JWT (JSON Web Token)*: É um padrão aberto para criar fichas de autenticação compactas e seguras que podem ser transmitidas entre sistemas. Um JWT é como um crachá digital assinado que contém informações sobre o usuário (como seu ID e permissões) codificadas em formato JSON. Quando você faz login em um sistema, ele gera um JWT que você apresenta nas próximas requisições para provar sua identidade, sem precisar enviar usuário e senha novamente. O JWT é assinado digitalmente, o que garante que não pode ser falsificado ou alterado @jones2015jwt.
+
 == Modelagem de Dados Dinâmica e Flexível
 
-A modelagem de dados para CMS que permitem definição dinâmica de tipos de conteúdo apresenta desafios únicos na engenharia de software. Segundo @kleppmann2017designing, sistemas que necessitam de flexibilidade de esquema devem balancear cuidadosamente entre performance de consultas e adaptabilidade estrutural.
+A modelagem de dados para CMS que permitem definição dinâmica de tipos de conteúdo apresenta desafios únicos na engenharia de software. Segundo @kleppmann2017designing, sistemas que necessitam de flexibilidade de schema devem balancear cuidadosamente entre performance de consultas e adaptabilidade estrutural.
 
 O padrão Entity-Attribute-Value (EAV) tradicionalmente usado para esquemas dinâmicos apresenta limitações significativas em performance e complexidade de consultas. Para endereçar estas limitações, o sistema proposto implementa uma abordagem híbrida que combina tabelas tipadas para tipos de dados primitivos com armazenamento JSON para estruturas complexas.
 
@@ -410,179 +450,99 @@ A arquitetura foi projetada priorizando:
 
 *Flexibilidade Tecnológica*: A camada de apresentação não está acoplada a nenhuma tecnologia específica, permitindo múltiplas implementações consumindo as mesmas APIs.
 
-== Stack Tecnológico
-
-A seleção das tecnologias priorizou maturidade do ecossistema, performance e type safety.
-
-=== Camada de Backend
-
-*Linguagem com Tipagem Estática*: Escolhida pela adequação a operações I/O intensivas comuns em APIs. A tipagem estática reduz erros em tempo de execução e melhora a experiência de desenvolvimento.
-
-*Banco de Dados Relacional*: Selecionado pelos recursos avançados incluindo conformidade ACID, suporte nativo a JSON para dados semi-estruturados, sistema robusto de indexação e extensibilidade. A capacidade de trabalhar com dados relacionais e documentos simultaneamente elimina a necessidade de múltiplos sistemas de persistência.
-
-*Sistema de Cache em Memória*: Utilizado como cache de alta performance para sessões e resultados de avaliações ABAC. A arquitetura em memória proporciona latências sub-milissegundo, essencial para operações frequentes de autorização.
-
-*Camada de Acesso a Dados*: Implementada com segurança de tipos completa entre a linguagem de aplicação e SQL, mantendo controle fino sobre queries geradas e evitando overhead desnecessário.
-
-=== Camada de Frontend
-
-*Tecnologia de Interface Moderna*: Selecionada por oferecer atualizações eficientes de interface, resultando em tamanho de aplicação reduzido e performance superior. A sintaxe declarativa facilita adoção por desenvolvedores.
-
-=== APIs
-
-*GraphQL*: Implementado como interface principal permitindo consultas flexíveis e eliminando over-fetching. O sistema de tipos forte garante contratos explícitos entre cliente e servidor.
-
-*REST*: Mantido para operações específicas (autenticação e assets) onde a simplicidade do modelo request-response é mais adequada que a complexidade do GraphQL.
-
-=== Segurança
-
-*JWT com Criptografia Assimétrica*: Tokens assinados criptograficamente garantem autenticidade sem necessidade de estado no servidor, facilitando escalabilidade horizontal. O algoritmo assimétrico permite validação distribuída sem compartilhamento de segredos.
-
-*Gerenciamento de Sessões*: TTL automático, renovação baseada em atividade e cache de atributos de autorização reduzem carga no banco de dados principal.
-
-*Criptografia de Transporte*: Protocolos modernos garantindo confidencialidade e integridade de todas as comunicações cliente-servidor.
-
-
 == Modelagem do Banco de Dados
 
 A modelagem de dados implementa estratégia híbrida combinando tabelas tipadas para primitivos com armazenamento JSON para estruturas complexas, conforme discutido no referencial teórico.
 
 === Entidades Principais
 
-*Collections (Coleções)*: Representa os tipos de conteúdo definidos pelos usuários. Cada coleção possui:
-- Metadados básicos (nome, slug, descrição)
-- Configurações visuais (ícone, cor)
-- Suporte à internacionalização (locales suportados)
-- Controle de criação e modificação
+O sistema organiza dados em três níveis hierárquicos:
 
-*Fields (Campos)*: Define os campos específicos de cada coleção com:
-- Tipo de dados (enum com 12 tipos suportados)
-- Validações (obrigatório, único)
-- Metadados de apresentação (label, descrição)
-- Configurações de segurança (sensibilidade, PII, criptografia)
+*Collections (Coleções)*: Define os tipos de conteúdo (ex: "Artigos", "Produtos"). Cada coleção especifica seus campos, suporte à internacionalização e configurações visuais.
 
-*Entries (Entradas)*: Representa instâncias de conteúdo com:
-- Status de publicação (DRAFT, PUBLISHED, ARCHIVED, DELETED)
-- Controle de versioning e internacionalização
-- Metadados de criação e modificação
-- Sistema de slugs para URLs amigáveis
+*Fields (Campos)*: Especifica os atributos de cada coleção com tipo de dado, validações e classificação de segurança (público, interno, confidencial, restrito).
+
+*Entries (Entradas)*: Representa as instâncias de conteúdo com status de publicação (rascunho, publicado, arquivado), controle de versão e suporte multilíngue.
+
+A Figura 3.2 apresenta em detalhe como essas três entidades principais se relacionam com as tabelas de valores tipados:
+
+#figure(
+  image("diagramas/collections_and_entries.png", width: 100%),
+  caption: [Estrutura detalhada das tabelas Collections, Fields e Entries com suas tabelas de valores associadas (texto, número, booleano, data, rich text, JSON, assets e relacionamentos)]
+) <fig-collections-entries>
 
 === Estratégia de Armazenamento por Tipo
 
-Implementação da abordagem híbrida discutida no referencial teórico:
+O sistema utiliza abordagem híbrida otimizada conforme a natureza dos dados:
 
-*Tipos Primitivos* (text, boolean, number, date_time): Tabelas dedicadas (`entry_texts`, `entry_booleans`, `entry_numbers`, `entry_datetimes`) com índices para consultas otimizadas.
+*Tipos Primitivos*: Campos simples (texto, número, booleano, data) são armazenados em tabelas dedicadas com índices otimizados para consultas rápidas.
 
-*Tipo Typst* (typst_text): Tabela especializada (`entry_typst_texts`) mantendo código fonte e versão renderizada.
+*Tipos Complexos*: Estruturas como listas e objetos JSON aproveitam o suporte nativo do PostgreSQL para dados semi-estruturados.
 
-*Tipos Complexos* (text_list, number_list, json): Tabela unificada `entry_json_data` aproveitando suporte nativo do PostgreSQL a JSONB.
+*Tipos Especiais*: Rich text mantém versões raw e renderizada. Assets incluem metadados de acessibilidade. Relacionamentos permitem conexões entre entradas.
 
-*Rich Text*: Tabela `entry_rich_texts` com armazenamento triplo (raw + rendered + format) suportando markdown, HTML e ProseMirror.
+Esta estratégia balanceia performance (primitivos indexados) com flexibilidade (estruturas complexas em JSON).
 
-*Assets*: Tabela `entry_assets` com ordenação múltipla e metadados de acessibilidade.
+=== Tabelas de Segurança e Controle de Acesso
 
-*Relacionamentos*: Tabela `entry_relations` gerenciando relacionamentos com suporte a consultas aninhadas.
-
-=== Diagrama Entidade-Relacionamento
-
-O diagrama ER apresentado na Figura 3.2 demonstra as principais entidades e seus relacionamentos:
+O banco de dados inclui um conjunto completo de tabelas para implementar o sistema ABAC, conforme ilustrado na Figura 3.3:
 
 #figure(
-  image("diagramas/database.png", width: 100%),
-  caption: [Esquema completo do banco de dados relacional com todas as tabelas e relacionamentos]
-) <fig-database-schema>
+  image("diagramas/simplified_security_related_to_content.png", width: 100%),
+  caption: [Tabelas de segurança (users, roles, policies) e sua relação com as entidades de conteúdo (collections, entries, fields, assets)]
+) <fig-security-content>
 
-- Sistema de ownership tracking com 3 tipos de propriedade
-- Schema ABAC completo com 8 tabelas para políticas e auditoria
-- Índices estratégicos para performance otimizada
+As tabelas principais de segurança incluem:
 
-=== Principais Tabelas e Relacionamentos
+*users*: Armazena credenciais e status dos usuários
+*roles e user_policies*: Gerencia papéis e atribuição de políticas a usuários
+*abac_policies e abac_policy_rules*: Define políticas ABAC com suas regras de avaliação
+*resource_ownerships*: Rastreia propriedade de recursos (criador, atribuído, herdado)
+*abac_evaluation_cache*: Cache de decisões para otimização de performance
+*abac_audit*: Auditoria completa de todas as decisões de autorização
 
-#table(
-  columns: (1.5fr, 1fr, 2fr),
-  inset: 8pt,
-  align: left,
-  table.header([*Tabela*], [*Tipo*], [*Descrição*]),
-  
-  [`users`], [Principal], [Usuários com name, passwordHash e status],
-  [`collections`], [Principal], [Definição de tipos de conteúdo],
-  [`fields`], [Estrutural], [Campos com classificação de segurança],
-  [`entries`], [Principal], [Instâncias de conteúdo com i18n],
-  [`entry_texts`], [Dados], [Valores de campos de texto],
-  [`entry_typst_texts`], [Dados], [Conteúdo Typst (raw + renderizado)],
-  [`entry_booleans`], [Dados], [Valores booleanos],
-  [`entry_numbers`], [Dados], [Valores numéricos],
-  [`entry_datetimes`], [Dados], [Valores de data/hora],
-  [`entry_rich_texts`], [Dados], [HTML/Markdown com formato],
-  [`entry_json_data`], [Dados], [Estruturas complexas consolidadas],
-  [`entry_assets`], [Referência], [Assets com ordenação múltipla],
-  [`entry_relations`], [Referência], [Relacionamentos entre entradas],
-  [`assets`], [Multimídia], [Arquivos com metadados de acessibilidade],
-  [`abac_policies`], [Segurança], [Políticas de controle de acesso],
-  [`abac_policy_rules`], [Segurança], [Regras específicas das políticas],
-  [`abac_evaluation_cache`], [Performance], [Cache de decisões ABAC],
-  [`abac_audit`], [Compliance], [Auditoria de decisões de acesso],
-)
+A Figura 3.4 apresenta o diagrama completo com todas as tabelas do sistema ABAC e seus relacionamentos detalhados:
+
+#figure(
+  image("diagramas/security.png", width: 100%),
+  caption: [Diagrama completo do sistema ABAC mostrando todas as tabelas de segurança (policies, rules, cache, audit) e suas relações com usuários e recursos]
+) <fig-security-complete>
 
 == Sistema de Controle de Acesso
 
 Implementação do modelo ABAC discutido no referencial teórico, com políticas declarativas armazenadas no banco de dados e motor de avaliação integrado.
 
-*Políticas ABAC* (`abac_policies`): Define políticas declarativas com efeito (ALLOW/DENY), prioridade para resolução de conflitos e conectores lógicos (AND/OR) para combinação de regras. Cada política especifica o tipo de recurso e ação que governa, com 15 ações granulares disponíveis.
+=== Arquitetura do ABAC
 
-*Regras de Política* (`abac_policy_rules`): Contém as condições específicas dentro de cada política, definindo caminhos de atributos tipados, operadores de comparação e valores esperados. Suporta 13 operadores diferentes incluindo comparações numéricas, matches de string e verificações de arrays.
+O sistema utiliza quatro componentes principais:
 
-*Cache de Avaliação* (`abac_evaluation_cache`): Sistema de cache de alta performance que armazena resultados de avaliação com TTL configurável, incluindo métricas de tempo de execução e invalidação baseada em checksum de contexto.
+*Políticas e Regras*: Políticas declarativas com efeito (permitir/negar), prioridade e conectores lógicos. Cada política contém regras que avaliam atributos do sujeito (usuário), recurso, ação e ambiente (horário, IP).
 
-*Auditoria Completa* (`abac_audit`): Log detalhado de todas as decisões de autorização incluindo contexto da requisição, políticas avaliadas, tempo de execução e razão da decisão para compliance e debugging.
+*Cache de Avaliação*: Sistema de cache de alta performance que armazena decisões recentes, reduzindo drasticamente o tempo de autorização em operações frequentes.
 
-O sistema define 28 caminhos de atributos tipados através do enum `attribute_path`:
+*Sistema de Auditoria*: Log completo de todas as decisões incluindo contexto, políticas avaliadas e justificativa, essencial para compliance e debugging.
 
-*Atributos do Sujeito* (4 atributos):
-- `subject.id`, `subject.role`, `subject.status`, `subject.createdAt`
+*Classificação de Dados*: Campos podem ser marcados com níveis de sensibilidade (público, interno, confidencial, restrito) e identificados como dados pessoais (PII), permitindo políticas automáticas baseadas na classificação.
 
-*Atributos de Recursos*:
-- Coleções (4 atributos): `resource.collection.id`, `resource.collection.slug`, `resource.collection.createdBy`, `resource.collection.isLocalized`
-- Entradas (6 atributos): `resource.entry.id`, `resource.entry.status`, `resource.entry.createdBy`, `resource.entry.collectionId`, `resource.entry.locale`, `resource.entry.publishedAt`
-- Campos (7 atributos): `resource.field.id`, `resource.field.name`, `resource.field.dataType`, `resource.field.sensitivityLevel`, `resource.field.isPii`, `resource.field.isPublic`, `resource.field.collectionId`
-- Assets (4 atributos): `resource.asset.id`, `resource.asset.uploadedBy`, `resource.asset.mimeType`, `resource.asset.fileSize`
+=== Tipos de Atributos
 
-*Atributos Ambientais* (3 atributos):
-- `environment.currentTime`, `environment.ipAddress`, `environment.userAgent`
+O sistema avalia decisões baseado em quatro categorias de atributos:
 
-*Atributos de Ação* (1 atributo):
-- `action.type` com 15 ações específicas: create, read, update, delete, publish, unpublish, schedule, archive, restore, draft, ban, unban, activate, deactivate, upload, download, transform, configure_fields, manage_schema
+*Atributos do Usuário*: Papel, status, departamento e histórico de criação
+*Atributos do Recurso*: Tipo, proprietário, status de publicação e sensibilidade
+*Atributos da Ação*: Operação sendo realizada (criar, ler, editar, publicar, etc.)
+*Atributos Ambientais*: Horário da requisição, localização e dispositivo usado
 
-Os campos implementam classificação automática de sensibilidade através do campo `sensitivityLevel` com quatro níveis:
+Esta combinação permite criar regras contextuais como "editores podem publicar artigos do seu departamento durante horário comercial".
 
-*PUBLIC*: Dados públicos sem restrições
-*INTERNAL*: Dados internos da organização
-*CONFIDENTIAL*: Dados sensíveis com acesso restrito
-*RESTRICTED*: Dados altamente sensíveis com máxima proteção
+=== Resolução de Conflitos
 
-Campos podem ser marcados como PII (`isPii`) e criptografados (`isEncrypted`), permitindo políticas específicas baseadas na classificação de dados.
+O sistema implementa resolução determinística de conflitos através de:
+- Prioridade numérica para ordenar políticas conflitantes
+- Conectores lógicos (AND/OR) para combinar múltiplas condições
+- Arquitetura "negar por padrão" seguindo o princípio de menor privilégio
 
-A tabela `resource_ownerships` rastreia propriedade de recursos com três tipos:
-
-*CREATOR*: Ownership automático baseado em criação
-*ASSIGNED*: Ownership explicitamente atribuído por administradores
-*INHERITED*: Ownership herdado de recursos pais
-
-Este sistema permite políticas dinâmicas baseadas em propriedade com suporte a expiração temporal.
-
-=== Otimizações e Características de Implementação
-
-*Performance*:
-- Cache multi-layer com invalidação baseada em checksum de contexto
-- 15+ índices estratégicos otimizando consultas ABAC
-- Métricas de tempo de execução para profiling
-
-*Resolução de Conflitos*:
-- Sistema de prioridade numérica para resolução determinística
-- Conectores lógicos AND/OR para combinação de regras
-- Arquitetura deny-by-default seguindo princípio de menor privilégio
-
-Exemplo de política complexa implementável:
+Exemplo de política implementável:
 
 ```
 ALLOW READ ON fields WHERE
@@ -590,7 +550,6 @@ ALLOW READ ON fields WHERE
   (sensitivityLevel = 'INTERNAL' AND
    subject.role IN ['editor', 'admin'] AND
    environment.currentTime BETWEEN 09:00-17:00)
-DENY IF field.isPii = true AND NOT subject.hasPrivacyTraining
 ```
 
 == APIs e Protocolos de Comunicação
@@ -603,7 +562,7 @@ Implementada para operações onde simplicidade e compatibilidade são prioritá
 
 *Autenticação* (`/auth`): Login, logout, refresh de tokens e recuperação de senha.
 
-*Assets* (`/assets`): Upload, download e streaming de arquivos multimídia. A natureza binária e necessidades de streaming justificam REST sobre GraphQL.
+*Assets* (`/assets`): Envio, download e transmissão de arquivos multimídia. A natureza binária e necessidades de transmissão em tempo real justificam REST sobre GraphQL.
 
 *Convenções*:
 - Métodos HTTP semânticos (GET, POST, PUT/PATCH, DELETE)
@@ -632,7 +591,7 @@ union FieldValue = Text | TypstText | Asset | BooleanValue |
 
 *Otimizações*:
 - Resolvers aplicam filtros diretamente no banco via SQL otimizado
-- Cursor-based pagination para datasets grandes
+- Cursor-based pagination para conjuntos de dados grandes
 - Ordenação multi-campo
 
 Exemplo de query combinando metadados de coleção com filtragem de conteúdo:
@@ -668,41 +627,46 @@ Implementação utilizando tecnologia de interface moderna aproveitando as carac
 
 *Segurança de Tipos*: Integração com tipagem estática end-to-end entre frontend e backend.
 
-*Interface Adaptativa*: UI se adapta automaticamente aos schemas definidos, gerando formulários e widgets específicos por tipo de campo.
+*Interface Adaptativa*: UI se adapta automaticamente aos schemas definidos, gerando formulários e componentes específicos por tipo de campo.
 
 === Módulos Principais
 
-*Dashboard*: Visão geral de coleções, estatísticas e navegação filtrada por permissões ABAC.
+*Painel de Controle*: Visão geral de coleções, estatísticas e navegação filtrada por permissões ABAC.
 
 *Editor de Coleções*: Definição de tipos de conteúdo com validação em tempo real.
 
 *Editor de Entradas*: Formulários gerados dinamicamente baseados no schema da coleção.
 
-*Gerenciador de Assets*: Upload e organização de mídias com metadados de acessibilidade.
+*Gerenciador de Assets*: Envio e organização de mídias com metadados de acessibilidade.
 
 *Configuração de Permissões*: Interface para criação e gerenciamento de políticas ABAC.
 
 
-== Segurança e Performance
+== Tecnologias, Segurança e Performance
 
-=== Medidas de Segurança Implementadas
+Esta seção apresenta as tecnologias selecionadas e as estratégias implementadas para garantir segurança e performance do sistema.
 
-*Autenticação*: Sistema baseado em credenciais (username/password) com hashing criptográfico seguro.
+=== Stack Tecnológico
 
-*Sessões*: Gerenciamento via sistema de cache com TTL configurável e renovação automática baseada em atividade.
+*Backend*: Linguagem com tipagem estática para APIs, adequada para operações I/O intensivas. Banco de dados PostgreSQL oferecendo conformidade ACID e suporte nativo a JSON. Redis como cache de alta performance para sessões e avaliações ABAC.
 
-*Validação*: Inputs validados via schemas estruturados, queries parametrizadas via camada de acesso a dados para prevenção de SQL injection.
+*Frontend*: Framework de interface moderna com atualizações eficientes, sintaxe declarativa e integração de tipos end-to-end com o backend.
 
-*Criptografia*: Suporte a encryption at rest para campos marcados como `isEncrypted`.
+*APIs*: GraphQL como interface principal para consultas flexíveis. REST para operações específicas (autenticação e envio de arquivos) onde simplicidade é prioritária.
+
+=== Segurança
+
+*Autenticação e Sessões*: Sistema baseado em JWT com criptografia assimétrica, permitindo validação distribuída. Sessões gerenciadas com TTL automático e renovação baseada em atividade.
+
+*Controle de Acesso*: Sistema ABAC integrado em todos os resolvers GraphQL e endpoints REST, com auditoria completa de decisões.
+
+*Proteção de Dados*: Validação de inputs via schemas tipados. Queries parametrizadas prevenindo SQL injection. Suporte a criptografia em repouso para campos sensíveis.
+
+*Transporte*: TLS/HTTPS garantindo confidencialidade e integridade de todas as comunicações.
 
 === Otimizações de Performance
 
-*Banco de Dados*:
-- 15+ índices estratégicos incluindo índices compostos para queries ABAC
-- Connection pooling otimizado
-- Prepared statements via camada de acesso a dados
+*Banco de Dados*: Índices estratégicos para consultas e filtragem de conteúdo. Connection pooling otimizado. Prepared statements para queries frequentes.
 
-*GraphQL*:
-- DataLoader para batching e eliminação do problema N+1
-- Query complexity analysis
-- Caching de schemas
+*GraphQL*: DataLoader eliminando problema N+1 em consultas relacionadas. Query complexity analysis prevenindo queries abusivas. Cache de schemas.
+

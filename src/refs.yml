@@ -479,3 +479,16 @@ researchgate2013abac:
   page-range: 14-16
   date: 2013
   doi: 10.1109/MITP.2013.37
+
+jones2015jwt:
+  type: report
+  title: "JSON Web Token (JWT)"
+  author:
+    - Jones, M.
+    - Bradley, J.
+    - Sakimura, N.
+  organization: Internet Engineering Task Force
+  number: "RFC 7519"
+  date: 2015-05
+  url: https://www.rfc-editor.org/info/rfc7519
+  note: "Acesso em: 12 out. 2025"
