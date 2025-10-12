@@ -49,7 +49,7 @@
   show heading.where(level: 1): it => {
     v(1cm)
     set text(size: 14pt, weight: "bold")
-
+    pagebreak()
     it
  
   }
@@ -57,6 +57,7 @@
   show heading.where(level: 2): it => {
     v(1cm)
     set text(size: 12pt, weight: "bold")
+    pagebreak()
     it
     v(0.5cm)
   }

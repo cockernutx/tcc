@@ -279,17 +279,37 @@ Antes de prosseguir com conceitos mais avançados, é importante definir alguns 
 
 A modelagem de dados para CMS que permitem definição dinâmica de tipos de conteúdo apresenta desafios únicos na engenharia de software. Segundo @kleppmann2017designing, sistemas que necessitam de flexibilidade de schema devem balancear cuidadosamente entre performance de consultas e adaptabilidade estrutural.
 
-O padrão Entity-Attribute-Value (EAV) tradicionalmente usado para esquemas dinâmicos apresenta limitações significativas em performance e complexidade de consultas. Para endereçar estas limitações, o sistema proposto implementa uma abordagem híbrida que combina tabelas tipadas para tipos de dados primitivos com armazenamento JSON para estruturas complexas.
+=== O Padrão Entity-Attribute-Value (EAV)
 
-A arquitetura de dados implementa estratégias diferenciadas baseadas na natureza dos tipos de dados:
+O padrão Entity-Attribute-Value (EAV), também conhecido como object-attribute-value ou open schema, é uma abordagem tradicional para modelagem de dados com schemas dinâmicos. No modelo EAV, os dados são armazenados em três colunas principais:
 
-*Tipos Primitivos*: Text, boolean, number e date_time são armazenados em tabelas dedicadas (entry_texts, entry_booleans, entry_numbers, entry_datetimes). Esta abordagem permite indexação eficiente e consultas otimizadas para operações comuns como busca textual e comparações numéricas.
+- *Entity*: Identifica a entidade sendo descrita (ex: ID do produto)
+- *Attribute*: Nome do atributo (ex: "cor", "tamanho", "peso")
+- *Value*: Valor do atributo (geralmente armazenado como texto)
 
-*Tipos Complexos*: Object, text_list, number_list e json são armazenados na tabela unificada entry_json_data, aproveitando as capacidades nativas de bancos de dados relacionais modernos para dados semi-estruturados. O campo value_type permite distinguir entre diferentes estruturas JSON, mantendo type safety a nível de aplicação.
+Esta abordagem oferece flexibilidade máxima, pois novos atributos podem ser adicionados sem alterações na estrutura da tabela. No entanto, o padrão EAV apresenta limitações significativas:
 
-*Tipos Especiais*: Assets utilizam tabela de referência (entry_assets) para metadados de arquivos, enquanto rich_text implementa armazenamento dual (raw + rendered) para otimização de performance de renderização.
+*Performance de Consultas*: Cada atributo requer uma linha separada na tabela, resultando em operações de JOIN complexas para reconstruir entidades completas. Consultas que em modelos tradicionais seriam simples tornam-se substancialmente mais lentas.
 
-*Relacionamentos*: A tabela entry_relations gerencia referências entre entradas, suportando relacionamentos um-para-um, um-para-muitos e muitos-para-muitos através de configuração de campo.
+*Perda de Tipagem*: Armazenar todos os valores como texto elimina as vantagens de tipos de dados nativos do banco, incluindo validação automática, otimizações de armazenamento e operações específicas por tipo.
+
+*Dificuldade de Indexação*: Índices tradicionais tornam-se menos efetivos quando todos os valores estão na mesma coluna, independentemente do tipo de dado ou semântica.
+
+*Complexidade de Consultas*: Queries SQL para filtrar ou ordenar por múltiplos atributos tornam-se extremamente verbosas e difíceis de manter.
+
+=== Abordagens Híbridas Modernas
+
+Para endereçar as limitações do EAV, arquiteturas modernas de CMS adotam estratégias híbridas que balanceiam flexibilidade com performance:
+
+*Tabelas Tipadas para Primitivos*: Tipos de dados simples e frequentemente consultados (texto, números, datas, booleanos) são armazenados em tabelas dedicadas com tipos nativos do banco de dados. Esta abordagem permite indexação eficiente e otimizações específicas por tipo.
+
+*Armazenamento JSON para Complexidade*: Estruturas complexas como listas, objetos aninhados e dados semi-estruturados aproveitam suporte nativo de bancos relacionais modernos (PostgreSQL, MySQL 8+) para tipos JSON. Isso mantém flexibilidade estrutural enquanto oferece operadores de consulta especializados.
+
+*Metadados de Schema*: Informações sobre a estrutura dos dados (definição de campos, tipos, validações) são mantidas em tabelas de metadados, permitindo validação em nível de aplicação e geração dinâmica de interfaces.
+
+*Estratégias de Relacionamento*: Referências entre entidades são gerenciadas através de tabelas de junção dedicadas, preservando integridade referencial enquanto suportam cardinalidades variadas (um-para-um, um-para-muitos, muitos-para-muitos).
+
+Estas abordagens híbridas permitem que sistemas modernos de gerenciamento de conteúdo ofereçam a flexibilidade de schemas dinâmicos sem comprometer significativamente a performance das operações mais comuns.
 
 == Frameworks e Padrões para Implementação de ABAC
 
