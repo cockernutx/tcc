@@ -225,20 +225,6 @@ nist2014abac:
   url: https://nvlpubs.nist.gov/nistpubs/specialpublications/nist.sp.800-162.pdf
   note: "Acesso em: 16 set. 2025"
 
-jin2012abac:
-  type: conference
-  title: "ABAC α: A Unifying Attribute-Based Access Control Model"
-  author:
-    - Jin, Xin
-    - Krishnan, Ram
-    - Sandhu, Ravi
-  parent:
-    type: proceedings
-    title: "Proceedings of the 26th Annual IFIP WG 11.3 Working Conference on Data and Applications Security and Privacy"
-    publisher: Springer
-  page-range: 19-31
-  date: 2012
-  doi: 10.1007/978-3-642-31540-4_2
 
 servos2017abac:
   type: article
@@ -267,50 +253,25 @@ bhatt2020abac:
     publisher: ACM
   page-range: 203-212
   date: 2020
-  doi: 10.1145/3381991.3395602
+  doi: 10.1145/3381991.3395618
 
-xu2024abac:
-  type: conference
-  title: "Access Control Attribute Mining Model Based on ALBERT-PFN"
-  author:
-    - Xu, Zhihao
-    - Wang, Jian
-    - Li, Mingchu
-  parent:
-    type: proceedings
-    title: "2024 IEEE 6th International Conference on Computer and Communications"
-    publisher: IEEE
-  date: 2024
-  doi: 10.1109/ICCC62479.2024.10843602
 
-chen2025blockchain:
-  type: article
-  title: "An efficient blockchain for decentralized ABAC policy decision point"
-  author:
-    - Chen, Lei
-    - Zhang, Wei
-    - Liu, Ming
-  parent:
-    type: periodical
-    title: Future Generation Computer Systems
-    volume: 154
-  page-range: 275-287
-  date: 2025
-  doi: 10.1016/j.future.2024.12.015
+
 
 liu2022zero:
   type: article
   title: "A novel zero-trust network access control scheme based on the security profile of devices and users"
   author:
-    - Liu, Xiaoming
-    - Yang, Jun
-    - Chen, Rongmao
+    - P. García-Teodoro
+    - J. Camacho 
+    - G. Maciá-Fernández
+    - et al
   parent:
     type: periodical
     title: Computer Networks
     volume: 217
   date: 2022
-  doi: 10.1016/j.comnet.2022.109309
+  doi: 10.1016/j.comnet.2022.109068
 
 oasis2013xacml:
   type: report
@@ -325,21 +286,17 @@ combiningpolicies2009:
   type: article
   title: "Access control policy combining: Theory meets practice"
   author:
-    - Bruns, Glenn
-    - Huth, Michael
-  parent:
-    type: periodical
-    title: Journal of Computer Security
-    volume: 17
-    issue: 4
-  page-range: 573-615
+    - Li, Ninghui  
+    - Wang, Qihua 
+    - Qardaji, Wahbeh
+    - et al.
   date: 2009
-  doi: 10.3233/JCS-2009-0340
+  doi: 10.1145/1542207.1542229
 
-styra2024opa:
+openpolicyagentcontributors2024opa:
   type: web
   title: "Open Policy Agent: Policy-based control for cloud native environments"
-  author: Styra
+  author: Open Policy Agent contributors
   url: https://www.openpolicyagent.org/
   date: 2024
   note: "Acesso em: 16 set. 2025"
@@ -373,7 +330,6 @@ researchgate2013abac:
   type: article
   title: "ABAC and RBAC: Scalable, flexible, and auditable access management"
   author:
-    - Kuhn, D. Richard
     - Coyne, Edward J.
     - Weil, Timothy R.
   parent:
@@ -441,7 +397,7 @@ graphql2024official:
 graphqlspec2025:
   type: web
   title: "Graphql Spec"
-  author: Hygraph
+  author: GraphQL Foundation
   url: https://spec.graphql.org/September2025/
   date: 2025
   note: "Acesso em: 12 out. 2025"
@@ -455,9 +411,7 @@ nadkarni2007eav:
     - Nadkarni, Prakash M.
     - Marenco, Luis
     - Chen, Ranjit
-    - Skoufos, Emmanuel
-    - Shepherd, Gordon
-    - Miller, Perry
+    - et al.
   parent:
     type: periodical
     title: International Journal of Medical Informatics
@@ -469,12 +423,13 @@ nadkarni2007eav:
   url: https://pmc.ncbi.nlm.nih.gov/articles/PMC2110957/
   note: "Acesso em: 12 out. 2025"
 
-dinu2016eav:
+batra2016eav:
   type: article
   title: "Entity Attribute Value Style Modeling Approach for Archetype Based Data"
   author:
-    - Dinu, Valentin
-    - Nadkarni, Prakash
+    - Batra, Shivani
+    - Sachdeva, Shelly
+    - et al.
   parent:
     type: periodical
     title: MDPI Information

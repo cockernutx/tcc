@@ -368,7 +368,6 @@
     ]
     // Use default paragraph properties for bibliography.
     show std-bibliography: set par(leading: 0.65em, justify: false, linebreaks: auto)
-      [= Referências]
       std-bibliography(bibliography, style: "associacao-brasileira-de-normas-tecnicas.csl")
   }
 

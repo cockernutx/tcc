@@ -77,11 +77,11 @@ Pense no CMS como um editor de documentos, similar ao Microsoft Word, mas para s
 === A Evolução dos CMS
 
 Os CMS passaram por três fases importantes:
-
+#linebreak()
 *Primeira Geração - Sites Estáticos*: No início da internet, qualquer mudança em um site exigia que um programador alterasse o código manualmente. Era como ter que chamar um engenheiro toda vez que você quisesse mudar a cor de uma parede da sua casa.
-
+#linebreak()
 *Segunda Geração - CMS Tradicionais*: Surgiram sistemas como WordPress e Joomla, que tornaram a criação de sites muito mais fácil. Hoje, o WordPress é usado por mais de 40% de todos os sites do mundo @w3techs2024usage. Esses sistemas são como blocos de montar: você escolhe um tema visual pronto, instala algumas extensões, e tem um site funcionando.
-
+#linebreak()
 *Terceira Geração - CMS Headless (Modernos)*: É a fase atual, onde o sistema separa completamente o gerenciamento do conteúdo da apresentação visual. Isso dá muito mais liberdade para os desenvolvedores criarem diferentes tipos de interfaces.
 
 === Componentes Básicos de um CMS
@@ -97,16 +97,16 @@ Todo CMS moderno possui cinco partes essenciais:
 === Três Tipos de CMS
 
 Hoje existem três categorias principais de CMS:
-
+#linebreak()
 *CMS Tradicionais*: Como o WordPress, onde tudo vem junto em um pacote único. São fáceis de usar e instalar, mas têm limitações quando você precisa de algo mais personalizado ou quando o site cresce muito.
-
+#linebreak()
 *CMS Headless (Desacoplados)*: Separam o gerenciamento de conteúdo da apresentação visual. É como ter uma biblioteca central de conteúdo que pode alimentar simultaneamente seu site, aplicativo de celular e até assistentes de voz. Oferece muito mais flexibilidade, mas é mais complexo de configurar.
-
+#linebreak()
 *CMS Híbridos*: Combinam as duas abordagens, permitindo usar o sistema da forma tradicional ou moderna, conforme a necessidade do projeto.
 
 == Controle de Acesso: Do Sistema de Papéis ao Sistema de Atributos
 
-=== O Sistema Tradicional: RBAC (Controle Baseado em Papéis)
+
 
 Imagine uma empresa onde existem diferentes cargos: gerente, editor e visitante. O sistema RBAC (sigla em inglês para Role-Based Access Control, ou "Controle de Acesso Baseado em Papéis") funciona exatamente assim - você atribui um "papel" ou "cargo" para cada usuário, e esse papel define o que a pessoa pode ou não fazer @sandhu1996role.
 
@@ -116,11 +116,11 @@ Por exemplo:
 - Um *Visitante* pode apenas visualizar
 
 Esse sistema funcionou bem por muitos anos e ainda é amplamente usado @ferraiolo2003role. No entanto, ele tem três problemas principais que limitam sua aplicabilidade em sistemas modernos :
-
+#linebreak()
 *Explosão de Papéis*: Em empresas grandes, você acaba precisando criar muitos papéis diferentes. Por exemplo: "Editor de Notícias", "Editor de Esportes", "Editor de Tecnologia", "Editor Sênior de Notícias"... A lista cresce rapidamente e fica difícil de gerenciar.
-
+#linebreak()
 *Falta de Flexibilidade com Contexto*: O RBAC não consegue criar regras como "Editores só podem publicar durante horário comercial" ou "Este conteúdo só pode ser acessado de dentro da empresa". Ele não considera a situação em que a pessoa está.
-
+#linebreak()
 *Controle Limitado*: É difícil criar regras muito específicas, como "este usuário pode editar o título mas não o corpo do texto" ou "pode ver alguns campos mas não outros".
 
 === O Sistema Moderno: ABAC (Controle Baseado em Atributos)
@@ -135,83 +135,79 @@ O ABAC considera quatro tipos de informação @servos2017abac:
 4. *Atributos do Ambiente*: Em que situação (horário do dia, localização, tipo de dispositivo usado)
 
 Com ABAC, você pode criar regras mais inteligentes como:
-
+#linebreak()
 "Médicos podem acessar prontuários de pacientes do seu departamento, mas apenas durante o horário de trabalho e usando um dispositivo aprovado pelo hospital"
-
+#linebreak()
 Essa regra seria extremamente difícil (ou impossível) de implementar com o sistema tradicional de papéis.
 
 === Como o ABAC Funciona
 
 O sistema ABAC possui quatro componentes principais que trabalham juntos @nist2014abac:
-
+#linebreak()
 *Ponto de Decisão (PDP - Policy Decision Point)*: É como um juiz que analisa as regras e decide se permite ou nega o acesso. Ele recebe informações sobre quem está tentando fazer o quê, consulta as políticas definidas e dá um veredicto: "permitido" ou "negado".
-
+#linebreak()
 *Ponto de Aplicação (PEP - Policy Enforcement Point)*: É como um guarda de segurança que intercepta toda tentativa de acesso. Quando alguém tenta fazer algo, o PEP para a requisição e pergunta ao PDP se pode permitir. Só depois da aprovação é que a ação acontece.
-
+#linebreak()
 *Ponto de Informação (PIP - Policy Information Point)*: É como um banco de dados de informações. Quando o PDP precisa saber se o usuário pertence a determinado departamento ou se hoje é dia útil, ele busca essas informações no PIP.
-
+#linebreak()
 *Ponto de Administração (PAP - Policy Administration Point)*: É a interface onde os administradores criam e gerenciam as regras de acesso. Funciona como um painel de controle para definir quem pode fazer o quê e em que situação.
 
 === Por Que o ABAC é Melhor para Sistemas Modernos
 
 O ABAC oferece quatro vantagens principais sobre modelos tradicionais @researchgate2013abac:
-
+#linebreak()
 *Mais Expressivo*: Permite criar regras complexas e inteligentes em linguagem quase natural, considerando múltiplos fatores ao mesmo tempo.
-
+#linebreak()
 *Mais Flexível*: As regras se adaptam automaticamente às mudanças. Se um funcionário muda de departamento, suas permissões mudam automaticamente sem precisar alterar configurações manualmente.
-
+#linebreak()
 *Mais Granular*: Permite controlar o acesso em nível muito detalhado, até mesmo campo por campo em um formulário. Essencial para sistemas de gerenciamento de conteúdo onde diferentes informações têm diferentes níveis de sensibilidade.
-
+#linebreak()
 *Mais Contextual*: Leva em conta a situação em que o acesso está acontecendo - horário, local, dispositivo - criando um sistema de segurança mais inteligente e adaptável.
 
 == Arquitetura Headless: Separando a "Cabeça" do "Corpo"
 
-=== Frontend e Backend: As Duas Camadas Principais
-
 Antes de entender a arquitetura headless, é importante conhecer dois conceitos fundamentais da arquitetura web @fielding2000architectural:
-
+#linebreak()
 *Backend (Retaguarda)*: É a parte "invisível" do sistema que fica no servidor. Inclui o banco de dados onde as informações são armazenadas, a lógica de negócios que processa os dados, e o sistema de segurança que controla quem pode acessar o quê. É como os bastidores de um teatro - o público não vê, mas é onde todo o trabalho acontece.
-
+#linebreak()
 *Frontend (Interface)*: É a parte visual que o usuário vê e interage - a interface gráfica, os botões, formulários e menus. Executa no navegador do usuário (Chrome, Firefox, Safari) e se comunica com o backend para buscar ou enviar dados. É como o palco do teatro onde a apresentação acontece.
 
 === O Que É um CMS Headless
-
+#linebreak()
 Imagine que um site tradicional é como um boneco de ação: a cabeça (a parte visual que as pessoas veem) está permanentemente grudada no corpo (o banco de dados e a lógica). Se você quiser trocar apenas a cabeça, precisa desmontar tudo.
-
+#linebreak()
 Um CMS Headless é diferente: a "cabeça" (frontend - a interface visual) está completamente separada do "corpo" (backend - onde os dados ficam) @headless2021decoupled. Eles conversam através de uma ponte chamada API (Interface de Programação de Aplicações). É como ter peças de LEGO que se encaixam mas podem ser trocadas independentemente.
 
 === API-First: Construindo Pela Ponte de Comunicação
 
 O conceito "API-first" significa que, ao construir o sistema, a primeira coisa que criamos é essa "ponte de comunicação" (a API). É como construir primeiro as estradas antes de construir as cidades - garante que tudo possa se conectar bem depois.
-
+#linebreak()
 Essa abordagem permite o "Content as a Service" (CaaS), ou "Conteúdo como Serviço". Pense no conteúdo como água em uma caixa d'água central: você pode conectar vários canos (sites, apps, dispositivos) nessa mesma fonte. Um único conteúdo alimenta múltiplas saídas.
 
 === Vantagens da Arquitetura Headless
 
 *Liberdade Tecnológica*: Você pode usar as melhores ferramentas para cada parte. Diferentes tecnologias de interface podem coexistir - site, aplicativo móvel e painel administrativo podem usar tecnologias distintas, mas todos consomem os mesmos dados do backend.
-
+#linebreak()
 *Escalabilidade Independente*: Se o site está recebendo muito tráfego, você pode aumentar apenas os recursos do frontend. Se precisa processar mais conteúdo, aumenta apenas o backend. É como poder expandir cômodos específicos da casa sem mexer nos outros.
-
+#linebreak()
 *Reutilização Máxima de Conteúdo*: Escreva um conteúdo uma vez, use em todos os lugares. O mesmo artigo pode aparecer no site, no aplicativo de celular, em assistentes de voz (como Alexa), em smartwatches, em telas de aeroporto - tudo automaticamente.
-
+#linebreak()
 *Estratégia Omnichannel*: Omnichannel significa "todos os canais". Você oferece uma experiência unificada para seus usuários em qualquer plataforma que eles escolham usar.
 
 === Desafios da Arquitetura Headless
 
 Nem tudo são flores. A arquitetura headless traz alguns desafios:
-
+#linebreak()
 *Complexidade Inicial Maior*: Configurar um sistema headless é mais complicado do que instalar um WordPress. Você precisa configurar o backend, depois o frontend, e garantir que eles conversem direito.
-
+#linebreak()
 *Exige Mais Conhecimento Técnico*: Para usar um WordPress você pode aprender na hora. Para um sistema headless, você precisa entender conceitos de APIs, requisições HTTP, e como conectar sistemas diferentes.
-
+#linebreak()
 *Coordenação Entre Equipes*: Se você tem uma equipe cuidando do backend e outra do frontend, elas precisam se comunicar constantemente para garantir que tudo funcione bem junto.
 
 == GraphQL: Uma Forma Mais Inteligente de Buscar Dados
 
-=== O Problema com APIs Tradicionais (REST)
-
 Imagine que você vai a um restaurante e pede um prato específico. Com APIs REST tradicionais, é como se o garçom trouxesse a refeição completa mesmo que você só quisesse a salada. Ou então você precisasse fazer três pedidos diferentes para conseguir montar sua refeição completa - um pedido para o prato principal, outro para a bebida, outro para a sobremesa.
-
+#linebreak()
 Isso causa dois problemas principais @graphqlspec2025:
 1. *Over-fetching*: Receber mais dados do que você precisa (desperdício de internet e processamento)
 2. *Under-fetching*: Precisar fazer várias requisições separadas para conseguir todos os dados necessários (lentidão)
@@ -219,48 +215,48 @@ Isso causa dois problemas principais @graphqlspec2025:
 === Como o GraphQL Resolve Isso
 
 O GraphQL, criado pelo Facebook em 2012 e lançado publicamente em 2015 @graphql2015facebook, funciona como um cardápio inteligente. Você diz exatamente o que quer, na quantidade que quer, e recebe apenas isso - tudo de uma vez só.
-
+#linebreak()
 Com GraphQL, você faz uma única pergunta detalhada e recebe exatamente o que pediu. É como dizer ao garçom: "Quero o frango grelhado, mas só a carne e o molho, sem os legumes. E também quero suco de laranja sem gelo." E receber exatamente isso.
 
 === Características Principais do GraphQL
 
 *Sistema de Tipos*: O GraphQL funciona como um contrato bem definido. Ele especifica exatamente que tipos de dados existem e o que você pode pedir. É como ter um cardápio detalhado que mostra todos os ingredientes disponíveis e como eles podem ser combinados.
-
+#linebreak()
 *Ponto Único de Entrada*: Em vez de ter múltiplos endereços (URLs) diferentes para buscar dados, o GraphQL usa um único ponto de entrada. É como ter um balconista único que te ajuda com qualquer pedido, em vez de precisar ir a vários guichês diferentes.
-
+#linebreak()
 *Consultas Flexíveis*: Você monta sua consulta pedindo exatamente os campos que precisa. Quer apenas o título e a data de um artigo? Peça só isso. Quer o artigo completo com autor e comentários? Também pode pedir tudo de uma vez.
 
 === Operações do GraphQL
 
 O GraphQL trabalha com três tipos de operações principais @banks2018learning:
-
+#linebreak()
 *Queries (Consultas)*: São operações de leitura de dados. Quando você quer buscar informações do sistema sem modificar nada, usa uma query. É como fazer uma pergunta ao banco de dados: "Me mostre todos os artigos publicados hoje" ou "Qual o nome do autor deste post?". As queries são somente leitura e nunca alteram dados.
-
+#linebreak()
 *Mutations (Mutações)*: São operações que modificam dados. Quando você precisa criar, atualizar ou deletar informações, usa uma mutation. É como dar um comando de ação: "Crie um novo artigo", "Atualize o título deste post" ou "Delete este comentário". As mutations sempre retornam os dados modificados para você confirmar a mudança.
-
+#linebreak()
 *Resolvers (Resolutores)*: São as funções que realmente executam o trabalho de buscar ou modificar os dados. Quando você faz uma query ou mutation, o resolver é quem vai no banco de dados, pega as informações necessárias e retorna o resultado. É como o cozinheiro que prepara seu pedido na cozinha - você não o vê trabalhando, mas ele é essencial para atender sua requisição.
 
 === GraphQL em Sistemas de Conteúdo
 
 Para sistemas de gerenciamento de conteúdo, o GraphQL é especialmente útil porque:
-
+#linebreak()
 *Adaptação a Diferentes Tipos*: O projeto usa "Union Types" (tipos unidos) que permitem que um campo possa conter diferentes tipos de dados - texto, número, data, imagem - e o GraphQL sabe lidar com cada um adequadamente.
-
+#linebreak()
 *Filtros Inteligentes*: Você pode fazer buscas específicas:
 - Em campos de texto: buscar coisas que "contêm" uma palavra, que "começam com" ou "terminam com" algo
 - Em campos numéricos: buscar valores maiores que, menores que, iguais a um número
 - Em campos de data: buscar conteúdos antes ou depois de uma data específica
-
+#linebreak()
 *Performance Otimizada*: O sistema é inteligente o suficiente para transformar sua consulta GraphQL em comandos otimizados para o banco de dados, buscando apenas o necessário e filtrando direto na fonte.
 
 == Conceitos Técnicos Fundamentais
 
 Antes de prosseguir com conceitos mais avançados, é importante definir alguns termos técnicos que serão utilizados ao longo deste trabalho:
-
+#linebreak()
 *Schema (Esquema)*: É como um "projeto" ou "planta" que define a estrutura dos dados. Assim como uma planta arquitetônica mostra onde ficam os quartos e banheiros de uma casa, um schema define quais campos existem em um tipo de conteúdo, que tipo de informação cada campo aceita (texto, número, data), e quais campos são obrigatórios. Em sistemas de banco de dados, o schema garante que os dados sejam armazenados de forma organizada e consistente @silberschatz2018database.
-
+#linebreak()
 *Cache (Memória Temporária)*: É um sistema de armazenamento temporário de alta velocidade. Funciona como ter os itens mais usados sempre à mão, em vez de buscar no armário toda vez. Quando uma informação é solicitada frequentemente, o sistema a guarda no cache para acessá-la muito mais rapidamente nas próximas vezes. Isso melhora drasticamente a velocidade do sistema, pois evita consultas repetidas ao banco de dados principal @kleppmann2017designing.
-
+#linebreak()
 *JWT (JSON Web Token)*: É um padrão aberto para criar fichas de autenticação compactas e seguras que podem ser transmitidas entre sistemas. Um JWT é como um crachá digital assinado que contém informações sobre o usuário (como seu ID e permissões) codificadas em formato JSON. Quando você faz login em um sistema, ele gera um JWT que você apresenta nas próximas requisições para provar sua identidade, sem precisar enviar usuário e senha novamente. O JWT é assinado digitalmente, o que garante que não pode ser falsificado ou alterado @jones2015jwt.
 
 == Modelagem de Dados Dinâmica e Flexível
@@ -276,33 +272,33 @@ O padrão Entity-Attribute-Value (EAV), também conhecido como object-attribute-
 - *Value*: Valor do atributo (geralmente armazenado como texto)
 
 Esta abordagem oferece flexibilidade máxima, pois novos atributos podem ser adicionados sem alterações na estrutura da tabela. No entanto, o padrão EAV apresenta limitações significativas:
-
+#linebreak()
 *Performance de Consultas*: Cada atributo requer uma linha separada na tabela, resultando em operações de JOIN complexas para reconstruir entidades completas. Consultas que em modelos tradicionais seriam simples tornam-se substancialmente mais lentas.
-
+#linebreak()
 *Perda de Tipagem*: Armazenar todos os valores como texto elimina as vantagens de tipos de dados nativos do banco, incluindo validação automática, otimizações de armazenamento e operações específicas por tipo.
-
+#linebreak()
 *Dificuldade de Indexação*: Índices tradicionais tornam-se menos efetivos quando todos os valores estão na mesma coluna, independentemente do tipo de dado ou semântica.
-
+#linebreak()
 *Complexidade de Consultas*: Queries SQL para filtrar ou ordenar por múltiplos atributos tornam-se extremamente verbosas e difíceis de manter.
 
 === Abordagens Híbridas Modernas
 
 Para endereçar as limitações do EAV, arquiteturas modernas de CMS adotam estratégias híbridas que balanceiam flexibilidade com performance:
-
+#linebreak()
 *Tabelas Tipadas para Primitivos*: Tipos de dados simples e frequentemente consultados (texto, números, datas, booleanos) são armazenados em tabelas dedicadas com tipos nativos do banco de dados. Esta abordagem permite indexação eficiente e otimizações específicas por tipo.
-
+#linebreak()
 *Armazenamento JSON para Complexidade*: Estruturas complexas como listas, objetos aninhados e dados semi-estruturados aproveitam suporte nativo de bancos relacionais modernos (PostgreSQL, MySQL 8+) para tipos JSON. Isso mantém flexibilidade estrutural enquanto oferece operadores de consulta especializados.
-
+#linebreak()
 *Metadados de Schema*: Informações sobre a estrutura dos dados (definição de campos, tipos, validações) são mantidas em tabelas de metadados, permitindo validação em nível de aplicação e geração dinâmica de interfaces.
-
+#linebreak()
 *Estratégias de Relacionamento*: Referências entre entidades são gerenciadas através de tabelas de junção dedicadas, preservando integridade referencial enquanto suportam cardinalidades variadas (um-para-um, um-para-muitos, muitos-para-muitos).
-
+#linebreak()
 Estas abordagens híbridas permitem que sistemas modernos de gerenciamento de conteúdo ofereçam a flexibilidade de schemas dinâmicos sem comprometer significativamente a performance das operações mais comuns.
 
 == Frameworks e Padrões para Implementação de ABAC
 
-Open Policy Agent emergiu como padrão de facto para implementação de ABAC em sistemas modernos. Conforme documentado por @styra2024opa, OPA oferece policy engine de propósito geral com linguagem declarativa Rego, arquitetura desacoplada Policy-as-Code e performance otimizada para milhares de autorizações por segundo.
-
+Open Policy Agent emergiu como padrão de facto para implementação de ABAC em sistemas modernos. Conforme documentado por @openpolicyagentcontributors2024opa, OPA oferece policy engine de propósito geral com linguagem declarativa Rego, arquitetura desacoplada Policy-as-Code e performance otimizada para milhares de autorizações por segundo.
+#linebreak()
 A linguagem Rego permite expressão de políticas complexas de forma declarativa:
 
 ```rego
@@ -326,34 +322,34 @@ within_business_hours {
 ```
 
 XACML permanece como padrão OASIS principal para linguagem de políticas ABAC. Conforme especificado por @oasis2013xacml, XACML define arquitetura, protocolo request/response e 13 algoritmos de combinação para resolução de conflitos entre políticas.
-
+#linebreak()
 A estrutura hierárquica do XACML inclui:
 - *Rules*: Unidade básica de política com condição e efeito
 - *Policies*: Conjunto de rules com algoritmo de combinação
 - *PolicySets*: Container para policies com meta-políticas
 
 Algoritmos de combinação como `deny-overrides` e `permit-overrides` resolvem conflitos sistematicamente, essencial para implementações robustas em sistemas enterprise.
-
+#linebreak()
 *Casbin*: Biblioteca multi-linguagem que oferece ABAC simplificado usando structs/objetos, popular para implementações em Node.js e Python @casbin2024docs.
-
+#linebreak()
 *AWS IAM com Tags*: Implementa ABAC nativamente usando tags como atributos, demonstrando escalabilidade enterprise em ambientes cloud @aws2024abac.
-
+#linebreak()
 *Apache Ranger*: Framework abrangente para segurança de dados com suporte nativo para tag-based ABAC policies e integração com Apache Atlas @ranger2024docs.
 
 == Segurança e Performance em Sistemas ABAC
 
 A literatura identifica vulnerabilidades específicas do ABAC que exigem mitigação cuidadosa:
-
+#linebreak()
 *Attribute Poisoning*: Atacantes manipulam atributos de entrada para obter acesso não autorizado.
-
+#linebreak()
 *Inference Attacks*: Exploração de padrões comportamentais para inferir regras de políticas. Defendido por limitação da visibilidade de regras aplicáveis e obfuscação de decisões.
-
+#linebreak()
 *Policy Conflicts*: Múltiplas políticas podem produzir decisões conflitantes. @oasis2013xacml especifica algoritmos formais para resolução, enquanto @combiningpolicies2009 analisa teoria e prática de combinação de políticas.
-
+#linebreak()
 *Smart Mask Ordering*: Reordenação de avaliação de atributos por probabilidade de decisão, resultando em 89% de melhoria de performance.
-
+#linebreak()
 *Attribute Caching*: Cache distribuído de atributos frequentemente acessados, reduzindo latência de PIPs externos.
-
+#linebreak()
 *Policy Indexing*: Estruturas de dados otimizadas para busca rápida de políticas aplicáveis baseada em atributos de contexto.
 
 == Comparação com Outros Sistemas
@@ -363,9 +359,9 @@ Para entender melhor o que este projeto oferece, vamos comparar com outros siste
 === WordPress: O Gigante Tradicional
 
 O WordPress é o sistema de gerenciamento de conteúdo mais popular do mundo, usado por mais de 40% de todos os sites @w3techs2024usage. Ele representa o modelo tradicional onde tudo vem em um pacote único @wordpress2024docs.
-
+#linebreak()
 *Pontos Fortes*: Fácil de usar, tem milhares de temas e plugins prontos, grande comunidade de suporte.
-
+#linebreak()
 *Limitações*: Quando o site cresce muito ou precisa se integrar com aplicativos de celular, o WordPress mostra suas limitações. Ele não foi feito pensando em arquitetura headless, então usá-lo apenas como backend não é muito eficiente.
 
 === Joomla: O Meio-Termo
@@ -375,31 +371,31 @@ O Joomla é uma alternativa ao WordPress que oferece controle de usuários e per
 === Strapi: O Principal Concorrente Headless
 
 O Strapi é o CMS headless open-source (código aberto) mais conhecido atualmente @strapi2024docs. Ele compartilha várias ideias com este projeto:
-
+#linebreak()
 *Semelhanças*:
 - Permite criar coleções de conteúdo personalizadas
 - Oferece APIs GraphQL e REST
 - Tem sistema de permissões baseado em papéis (roles)
 - Suporta vários tipos de dados diferentes
-
+#linebreak()
 *Diferenças Importantes*:
-
+#linebreak()
 *Controle de Permissões*: O Strapi usa apenas o sistema tradicional RBAC (controle por papéis) @strapi2024docs, que só permite definir permissões por tipo de conteúdo inteiro. Este projeto usa ABAC, permitindo controle muito mais fino - até mesmo por campo individual e considerando o contexto (horário, localização, etc.).
-
+#linebreak()
 *Organização dos Dados*: Este projeto usa uma estratégia híbrida que organiza os dados de forma mais otimizada dependendo do tipo de informação, resultando em consultas mais rápidas.
-
+#linebreak()
 *Regras Contextuais*: O Strapi não consegue criar regras como "só pode publicar durante horário comercial" ou "só pode acessar deste local". Este projeto implementa essas capacidades através do ABAC.
 
 == Tecnologias de Interface Moderna
 
 As tecnologias de interface modernas representam uma evolução significativa no desenvolvimento de aplicações web, oferecendo diferentes abordagens para gerenciamento de estado e atualização de interfaces de usuário. Frameworks modernos como React, Vue, Svelte e SolidJS utilizam programação reativa e virtual DOM (ou compilação direta) para otimizar atualizações de interface @solidjs2024docs.
-
+#linebreak()
 Para aplicações de gerenciamento de conteúdo, as características das tecnologias de interface modernas oferecem vantagens específicas:
-
+#linebreak()
 *Tamanho Otimizado*: Tecnologias modernas oferecem pacotes menores e tempo de carregamento reduzido, beneficiando dashboards administrativos que frequentemente incluem múltiplas bibliotecas especializadas.
-
+#linebreak()
 *Performance Consistente*: Técnicas modernas de atualização de interface oferecem renderização mais eficiente para aplicações que manipulam grandes volumes de dados, como listas de entradas de conteúdo ou árvores de categorias.
-
+#linebreak()
 *Experiência do Desenvolvedor*: Sintaxes declarativas modernas reduzem a curva de aprendizado para desenvolvedores, facilitando migração e onboarding de equipes.
 
 // ================================
@@ -437,13 +433,13 @@ O sistema adota arquitetura em três camadas com separação clara de responsabi
 === Decisões Arquiteturais
 
 A arquitetura foi projetada priorizando:
-
+#linebreak()
 *Separação de Responsabilidades*: Cada camada possui escopo bem definido, facilitando manutenção e evolução independente dos componentes.
-
+#linebreak()
 *Desacoplamento via APIs*: A comunicação entre camadas ocorre exclusivamente através de interfaces contratuais, permitindo substituição de implementações sem impacto em outras camadas.
-
+#linebreak()
 *Escalabilidade Horizontal*: As camadas podem escalar independentemente baseado na demanda específica de cada componente.
-
+#linebreak()
 *Flexibilidade Tecnológica*: A camada de apresentação não está acoplada a nenhuma tecnologia específica, permitindo múltiplas implementações consumindo as mesmas APIs.
 
 == Modelagem do Banco de Dados
@@ -453,13 +449,13 @@ A modelagem de dados implementa estratégia híbrida combinando tabelas tipadas 
 === Entidades Principais
 
 O sistema organiza dados em três níveis hierárquicos:
-
+#linebreak()
 *Collections (Coleções)*: Define os tipos de conteúdo (ex: "Artigos", "Produtos"). Cada coleção especifica seus campos, suporte à internacionalização e configurações visuais.
-
+#linebreak()
 *Fields (Campos)*: Especifica os atributos de cada coleção com tipo de dado, validações e classificação de segurança (público, interno, confidencial, restrito).
-
+#linebreak()
 *Entries (Entradas)*: Representa as instâncias de conteúdo com status de publicação (rascunho, publicado, arquivado), controle de versão e suporte multilíngue.
-
+#linebreak()
 A Figura 3.2 apresenta em detalhe como essas três entidades principais se relacionam com as tabelas de valores tipados:
 
 #figure(
@@ -470,13 +466,13 @@ A Figura 3.2 apresenta em detalhe como essas três entidades principais se relac
 === Estratégia de Armazenamento por Tipo
 
 O sistema utiliza abordagem híbrida otimizada conforme a natureza dos dados:
-
+#linebreak()
 *Tipos Primitivos*: Campos simples (texto, número, booleano, data) são armazenados em tabelas dedicadas com índices otimizados para consultas rápidas.
-
+#linebreak()
 *Tipos Complexos*: Estruturas como listas e objetos JSON aproveitam o suporte nativo do PostgreSQL para dados semi-estruturados.
-
+#linebreak()
 *Tipos Especiais*: Rich text mantém versões raw e renderizada. Assets incluem metadados de acessibilidade. Relacionamentos permitem conexões entre entradas.
-
+#linebreak()
 Esta estratégia balanceia performance (primitivos indexados) com flexibilidade (estruturas complexas em JSON).
 
 === Tabelas de Segurança e Controle de Acesso
@@ -489,14 +485,19 @@ O banco de dados inclui um conjunto completo de tabelas para implementar o siste
 ) <fig-security-content>
 
 As tabelas principais de segurança incluem:
-
+#linebreak()
 *users*: Armazena credenciais e status dos usuários
+#linebreak()
 *roles e user_policies*: Gerencia papéis e atribuição de políticas a usuários
+#linebreak()
 *abac_policies e abac_policy_rules*: Define políticas ABAC com suas regras de avaliação
+#linebreak()
 *resource_ownerships*: Rastreia propriedade de recursos (criador, atribuído, herdado)
+#linebreak()
 *abac_evaluation_cache*: Cache de decisões para otimização de performance
+#linebreak()
 *abac_audit*: Auditoria completa de todas as decisões de autorização
-
+#linebreak()
 A Figura 3.4 apresenta o diagrama completo com todas as tabelas do sistema ABAC e seus relacionamentos detalhados:
 
 #figure(
@@ -511,24 +512,27 @@ Implementação do modelo ABAC discutido no referencial teórico, com políticas
 === Arquitetura do ABAC
 
 O sistema utiliza quatro componentes principais:
-
+#linebreak()
 *Políticas e Regras*: Políticas declarativas com efeito (permitir/negar), prioridade e conectores lógicos. Cada política contém regras que avaliam atributos do sujeito (usuário), recurso, ação e ambiente (horário, IP).
-
+#linebreak()
 *Cache de Avaliação*: Sistema de cache de alta performance que armazena decisões recentes, reduzindo drasticamente o tempo de autorização em operações frequentes.
-
+#linebreak()
 *Sistema de Auditoria*: Log completo de todas as decisões incluindo contexto, políticas avaliadas e justificativa, essencial para compliance e debugging.
-
+#linebreak()
 *Classificação de Dados*: Campos podem ser marcados com níveis de sensibilidade (público, interno, confidencial, restrito) e identificados como dados pessoais (PII), permitindo políticas automáticas baseadas na classificação.
 
 === Tipos de Atributos
 
 O sistema avalia decisões baseado em quatro categorias de atributos:
-
+#linebreak()
 *Atributos do Usuário*: Papel, status, departamento e histórico de criação
+#linebreak()
 *Atributos do Recurso*: Tipo, proprietário, status de publicação e sensibilidade
+#linebreak()
 *Atributos da Ação*: Operação sendo realizada (criar, ler, editar, publicar, etc.)
+#linebreak()
 *Atributos Ambientais*: Horário da requisição, localização e dispositivo usado
-
+#linebreak()
 Esta combinação permite criar regras contextuais como "editores podem publicar artigos do seu departamento durante horário comercial".
 
 === Resolução de Conflitos
@@ -555,11 +559,11 @@ O sistema oferece duas interfaces de comunicação complementares, cada uma otim
 === API REST
 
 Implementada para operações onde simplicidade e compatibilidade são prioritárias:
-
+#linebreak()
 *Autenticação* (`/auth`): Login, logout, refresh de tokens e recuperação de senha.
-
+#linebreak()
 *Assets* (`/assets`): Envio, download e transmissão de arquivos multimídia. A natureza binária e necessidades de transmissão em tempo real justificam REST sobre GraphQL.
-
+#linebreak()
 *Convenções*:
 - Métodos HTTP semânticos (GET, POST, PUT/PATCH, DELETE)
 - Status codes consistentes (2xx sucesso, 4xx erro cliente, 5xx erro servidor)
@@ -568,23 +572,23 @@ Implementada para operações onde simplicidade e compatibilidade são prioritá
 === API GraphQL
 
 Interface principal do sistema, oferecendo flexibilidade superior conforme discutido no referencial teórico.
-
+#linebreak()
 *Design do Esquema*: Queries e mutations estruturadas para eliminar necessidade de joins manuais pelo cliente.
-
+#linebreak()
 *Union Types para Flexibilidade*: Utilização de Union Types para representar diferentes tipos de campos (`FieldValue`), mantendo type safety para diferentes estruturas de dados:
-
+#linebreak()
 ```graphql
 union FieldValue = Text | TypstText | Asset | BooleanValue | 
                    NumberValue | DateTime | RichText | Json | Relation
 ```
-
+#linebreak()
 *Sistema de Filtering*: Filtros específicos por tipo implementando os operadores discutidos no referencial teórico:
 - Texto: `contains`, `startsWith`, `endsWith`, `equals`
 - Numérico: `gt`, `gte`, `lt`, `lte`, `equals`
 - Data: `before`, `after`, `equals`
 - Booleano: `equals`
 - Relacionamentos: `exists`, `in`, `notIn`
-
+#linebreak()
 *Otimizações*:
 - Resolvers aplicam filtros diretamente no banco via SQL otimizado
 - Cursor-based pagination para conjuntos de dados grandes
@@ -620,21 +624,21 @@ Implementação utilizando tecnologia de interface moderna aproveitando as carac
 === Características Técnicas
 
 *Arquitetura Reativa*: Atualizações eficientes de interface baseadas em mudanças de estado.
-
+#linebreak()
 *Segurança de Tipos*: Integração com tipagem estática end-to-end entre frontend e backend.
-
+#linebreak()
 *Interface Adaptativa*: UI se adapta automaticamente aos schemas definidos, gerando formulários e componentes específicos por tipo de campo.
 
 === Módulos Principais
 
 *Painel de Controle*: Visão geral de coleções, estatísticas e navegação filtrada por permissões ABAC.
-
+#linebreak()
 *Editor de Coleções*: Definição de tipos de conteúdo com validação em tempo real.
-
+#linebreak()
 *Editor de Entradas*: Formulários gerados dinamicamente baseados no schema da coleção.
-
+#linebreak()
 *Gerenciador de Assets*: Envio e organização de mídias com metadados de acessibilidade.
-
+#linebreak()
 *Configuração de Permissões*: Interface para criação e gerenciamento de políticas ABAC.
 
 
@@ -642,27 +646,27 @@ Implementação utilizando tecnologia de interface moderna aproveitando as carac
 
 Esta seção apresenta as tecnologias selecionadas e as estratégias implementadas para garantir segurança e performance do sistema.
 
-=== Stack Tecnológico
+=== Tecnologias Utilizadas
 
 *Backend*: Linguagem com tipagem estática para APIs, adequada para operações I/O intensivas. Banco de dados PostgreSQL oferecendo conformidade ACID e suporte nativo a JSON. Redis como cache de alta performance para sessões e avaliações ABAC.
-
+#linebreak()
 *Frontend*: Framework de interface moderna com atualizações eficientes, sintaxe declarativa e integração de tipos end-to-end com o backend.
-
+#linebreak()
 *APIs*: GraphQL como interface principal para consultas flexíveis. REST para operações específicas (autenticação e envio de arquivos) onde simplicidade é prioritária.
 
 === Segurança
 
 *Autenticação e Sessões*: Sistema baseado em JWT com criptografia assimétrica, permitindo validação distribuída. Sessões gerenciadas com TTL automático e renovação baseada em atividade.
-
+#linebreak()
 *Controle de Acesso*: Sistema ABAC integrado em todos os resolvers GraphQL e endpoints REST, com auditoria completa de decisões.
-
+#linebreak()
 *Proteção de Dados*: Validação de inputs via schemas tipados. Queries parametrizadas prevenindo SQL injection. Suporte a criptografia em repouso para campos sensíveis.
-
+#linebreak()
 *Transporte*: TLS/HTTPS garantindo confidencialidade e integridade de todas as comunicações.
 
 === Otimizações de Performance
 
 *Banco de Dados*: Índices estratégicos para consultas e filtragem de conteúdo. Connection pooling otimizado. Prepared statements para queries frequentes.
-
+#linebreak()
 *GraphQL*: DataLoader eliminando problema N+1 em consultas relacionadas. Query complexity analysis prevenindo queries abusivas. Cache de schemas.
 
