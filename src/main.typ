@@ -70,7 +70,7 @@ Este capítulo apresenta o referencial teórico fundamental para compreensão do
 
 == Sistemas de Gerenciamento de Conteúdo (CMS)
 
-Um Sistema de Gerenciamento de Conteúdo (ou CMS, da sigla em inglês _Content Management System_) é como um painel de controle para gerenciar o conteúdo de um site @zhang2008content. Ele permite que pessoas sem conhecimento técnico possam criar, editar e publicar textos, imagens e vídeos em um site, sem precisar saber programação.
+Um Sistema de Gerenciamento de Conteúdo (ou CMS, da sigla em inglês _Content Management System_) é como um painel de controle para gerenciar o conteúdo de um site @nath2010content. Ele permite que pessoas sem conhecimento técnico possam criar, editar e publicar textos, imagens e vídeos em um site, sem precisar saber programação.
 
 Pense no CMS como um editor de documentos, similar ao Microsoft Word, mas para sites. Em vez de precisar escrever código para adicionar uma nova notícia ou atualizar uma foto, você simplesmente usa uma interface visual, clica em botões e preenche formulários @chen2002study.
 
@@ -78,7 +78,7 @@ Pense no CMS como um editor de documentos, similar ao Microsoft Word, mas para s
 
 Os CMS passaram por três fases importantes de evolução @chen2002study:
 #linebreak()
-*Primeira Geração - Sites Estáticos*: No início da internet, qualquer mudança em um site exigia que um programador alterasse o código manualmente. Era como ter que chamar um engenheiro toda vez que você quisesse mudar a cor de uma parede da sua casa @zhang2008content.
+*Primeira Geração - Sites Estáticos*: No início da internet, qualquer mudança em um site exigia que um programador alterasse o código manualmente. Era como ter que chamar um engenheiro toda vez que você quisesse mudar a cor de uma parede da sua casa @nath2010content.
 #linebreak()
 *Segunda Geração - CMS Tradicionais*: Surgiram sistemas como WordPress e Joomla, que tornaram a criação de sites muito mais fácil @wordpress2024docs @joomla2024docs. Hoje, o WordPress é usado por mais de 40% de todos os sites do mundo @w3techs2024usage. Esses sistemas são como blocos de montar: você escolhe um tema visual pronto, instala algumas extensões, e tem um site funcionando.
 #linebreak()
@@ -86,7 +86,7 @@ Os CMS passaram por três fases importantes de evolução @chen2002study:
 
 === Componentes Básicos de um CMS
 
-Todo CMS moderno possui cinco partes essenciais @zhang2008content:
+Todo CMS moderno possui cinco partes essenciais @nath2010content:
 
 1. *Painel Administrativo*: Onde você cria e edita o conteúdo (textos, imagens, vídeos)
 2. *Banco de Dados*: Onde todas as informações são armazenadas de forma organizada
