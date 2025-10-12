@@ -14,12 +14,21 @@ barkley1999role:
 banks2018learning:
   type: book
   title: "Learning GraphQL: Declarative Data Fetching for Modern Web Apps"
-  author: 
+  author:
     - Banks, Alex
     - Porcello, Eve
   publisher: O'Reilly Media
   location: Sebastopol
   date: 2018
+
+boiko2005:
+  type: book
+  title: "Content Management Bible"
+  author: Boiko, Bob
+  edition: 2
+  publisher: Wiley Publishing, Inc.
+  location: Indianapolis
+  date: 2005
 
 bax2020mechanized:
   type: conference
