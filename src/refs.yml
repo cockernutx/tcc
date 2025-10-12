@@ -439,3 +439,80 @@ batra2016eav:
   doi: 10.3390/info9010002
   url: https://www.mdpi.com/2078-2489/9/1/2
   note: "Acesso em: 12 out. 2025"
+
+# Referências sobre banco de dados e armazenamento
+
+postgresql2024json:
+  type: web
+  title: "JSON Types"
+  author: PostgreSQL Global Development Group
+  url: https://www.postgresql.org/docs/current/datatype-json.html
+  date: 2024
+  note: "Acesso em: 12 out. 2025"
+
+mongodb2024bson:
+  type: web
+  title: "JSON and BSON"
+  author: MongoDB Inc.
+  url: https://www.mongodb.com/json-and-bson
+  date: 2024
+  note: "Acesso em: 12 out. 2025"
+
+# Referências sobre frameworks e tecnologias frontend
+
+react2024docs:
+  type: web
+  title: "React: The library for web and native user interfaces"
+  author: Meta Open Source
+  url: https://react.dev/
+  date: 2024
+  note: "Acesso em: 12 out. 2025"
+
+vue2024docs:
+  type: web
+  title: "Vue.js: The Progressive JavaScript Framework"
+  author: Vue.js Team
+  url: https://vuejs.org/
+  date: 2024
+  note: "Acesso em: 12 out. 2025"
+
+svelte2024docs:
+  type: web
+  title: "Svelte: Cybernetically enhanced web apps"
+  author: Svelte Team
+  url: https://svelte.dev/
+  date: 2024
+  note: "Acesso em: 12 out. 2025"
+
+# Referências sobre padrões de design
+
+gamma1994design:
+  type: book
+  title: "Design Patterns: Elements of Reusable Object-Oriented Software"
+  author:
+    - Gamma, Erich
+    - Helm, Richard
+    - Johnson, Ralph
+    - Vlissides, John
+  publisher: Addison-Wesley Professional
+  location: Reading
+  date: 1994
+  note: "Gang of Four (GoF)"
+
+fowler2002patterns:
+  type: book
+  title: "Patterns of Enterprise Application Architecture"
+  author: Fowler, Martin
+  publisher: Addison-Wesley Professional
+  location: Boston
+  date: 2002
+
+# Referências sobre CMS e sistemas de conteúdo
+
+joomla2024docs:
+  type: web
+  title: "Joomla! Documentation"
+  author: Open Source Matters Inc.
+  url: https://docs.joomla.org/
+  date: 2024
+  note: "Acesso em: 12 out. 2025"

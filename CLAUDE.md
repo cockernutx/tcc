@@ -44,7 +44,7 @@ O capitulo três serve para adicionarmos conceitos proprios e elaborar sobre o d
 Todas as definições de conceitos e afirmações devem conter referencias.
 Caso não haja referencias o suficientes no projeto avise o usuario.
 
-Referencias devem vir de fontes confiaveis, então nada de blogs ou websites de empresas sem projetos open source e auditaveis.
+Referencias devem vir de fontes confiaveis, então nada de blogs.
 
 ## Componentes Principais
 
