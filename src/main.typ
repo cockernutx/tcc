@@ -98,7 +98,7 @@ Hoje existem três categorias principais de CMS @headless2021decoupled:
 #linebreak()
 *CMS Tradicionais*: Como o WordPress, onde tudo vem junto em um pacote único @wordpress2024docs. São fáceis de usar e instalar, mas têm limitações quando você precisa de algo mais personalizado ou quando o site cresce muito.
 #linebreak()
-*CMS _Headless_ (Desacoplados)*: Separam o gerenciamento de conteúdo da apresentação visual @headless2021decoupled @boiko2005. É como ter uma biblioteca central de conteúdo que pode alimentar simultaneamente seu site, aplicativo de celular e até assistentes de voz. Oferece muito mais flexibilidade, mas é mais complexo de configurar.
+*CMS _Headless_ (Desacoplados)*: Separam o gerenciamento de conteúdo da apresentação visual @headless2021decoupled @boiko2005. É como ter uma biblioteca central de conteúdo que pode alimentar simultaneamente seu site, aplicativo de celular e até assistentes de voz. Oferece muito mais flexibilidade, mas é mais complexo de configurar. Este conceito é amplamente discutido por Boiko (2005), que destaca a importância de frameworks robustos para a implementação de sistemas de gerenciamento de conteúdo, e por estudos recentes como o de 2021, que exploram a separação entre backend e frontend para maior escalabilidade e reutilização de conteúdo.
 #linebreak()
 *CMS Híbridos*: Combinam as duas abordagens @strapi2024docs, permitindo usar o sistema da forma tradicional ou moderna, conforme a necessidade do projeto.
 
@@ -191,7 +191,7 @@ Antes de prosseguir com conceitos mais avançados, é importante definir alguns 
 #linebreak()
 *_Schema_ (Esquema)*: É como um "projeto" ou "planta" que define a estrutura dos dados. Assim como uma planta arquitetônica mostra onde ficam os quartos e banheiros de uma casa, um schema define quais campos existem em um tipo de conteúdo, que tipo de informação cada campo aceita (texto, número, data), e quais campos são obrigatórios. Em sistemas de banco de dados, o _schema_ garante que os dados sejam armazenados de forma organizada e consistente @silberschatz2018database.
 #linebreak()
-*_Cache_ (Memória Temporária)*: É um sistema de armazenamento temporário de alta velocidade. Funciona como ter os itens mais usados sempre à mão, em vez de buscar no armário toda vez. Quando uma informação é solicitada frequentemente, o sistema a guarda no _cache_ para acessá-la muito mais rapidamente nas próximas vezes. Isso melhora drasticamente a velocidade do sistema, pois evita consultas repetidas ao banco de dados principal @kleppmann2017designing.
+*_Cache_ (Memória Temporária)*: É um sistema de armazenamento temporário de alta velocidade. Funciona como ter os itens mais usados sempre à mão, em vez de buscar no armário toda vez. Quando uma informação é solicitada frequentemente, o sistema a guarda no _cache_ para acessá-la muito mais rapidamente nas próximas vezes. Isso melhora drasticicamente a velocidade do sistema, pois evita consultas repetidas ao banco de dados principal @kleppmann2017designing.
 #linebreak()
 *JWT (JSON Web Token)*: É um padrão aberto para criar fichas de autenticação compactas e seguras que podem ser transmitidas entre sistemas. Um JWT é como um crachá digital assinado que contém informações sobre o usuário (como seu ID e permissões) codificadas em formato JSON. Quando você faz login em um sistema, ele gera um JWT que você apresenta nas próximas requisições para provar sua identidade, sem precisar enviar usuário e senha novamente. O JWT é assinado digitalmente, o que garante que não pode ser falsificado ou alterado @jones2015jwt.
 
