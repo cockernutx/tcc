@@ -76,13 +76,11 @@ Pense no CMS como um editor de documentos, similar ao Microsoft Word, mas para s
 
 === A Evolução dos CMS
 
-Os CMS passaram por três fases importantes de evolução @chen2002study:
-#linebreak()
-*Primeira Geração - Sites Estáticos*: No início da internet, qualquer mudança em um site exigia que um programador alterasse o código manualmente. Era como ter que chamar um engenheiro toda vez que você quisesse mudar a cor de uma parede da sua casa @nath2010content.
-#linebreak()
-*Segunda Geração - CMS Tradicionais*: Surgiram sistemas como WordPress e Joomla, que tornaram a criação de sites muito mais fácil @wordpress2024docs @joomla2024docs. Hoje, o WordPress é usado por mais de 40% de todos os sites do mundo @w3techs2024usage. Esses sistemas são como blocos de montar: você escolhe um tema visual pronto, instala algumas extensões, e tem um site funcionando.
-#linebreak()
-*Terceira Geração - CMS Headless (Modernos)*: É a fase atual, onde o sistema separa completamente o gerenciamento do conteúdo da apresentação visual @headless2021decoupled. Isso dá muito mais liberdade para os desenvolvedores criarem diferentes tipos de interfaces.
+Os sistemas de gerenciamento de conteúdo evoluíram significativamente desde o surgimento da web. Inicialmente, a publicação de conteúdo na internet exigia conhecimento técnico: desenvolvedores precisavam editar manualmente arquivos HTML e fazer upload via FTP para cada atualização no site @boiko2005.
+
+Com o amadurecimento da web, surgiram plataformas que simplificaram radicalmente este processo. Sistemas como WordPress e Joomla democratizaram a criação de sites ao oferecer interfaces visuais intuitivas, permitindo que usuários sem conhecimento de programação pudessem gerenciar conteúdo @wordpress2024docs @joomla2024docs. Esta abordagem foi tão bem-sucedida que, atualmente, o WordPress sozinho é utilizado por mais de 40% de todos os sites da internet @w3techs2024usage.
+
+Mais recentemente, observa-se o crescimento de uma arquitetura conhecida como CMS headless, onde o backend de gerenciamento de conteúdo é completamente separado do frontend de apresentação @headless2021decoupled. Esta separação oferece maior flexibilidade para distribuir o mesmo conteúdo através de múltiplos canais (web, aplicativos móveis, dispositivos IoT, etc.), respondendo às demandas de uma experiência digital cada vez mais diversificada.
 
 === Componentes Básicos de um CMS
 

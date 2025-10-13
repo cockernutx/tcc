@@ -368,12 +368,15 @@ jones2015jwt:
 headless2021decoupled:
   type: article
   title: "Headless CMS and the Decoupled Frontend Architecture"
-  author: ResearchGate
+  author: Jain, Vivek
   parent:
     type: periodical
     title: International Journal of Innovative Research in Engineering & Multidisciplinary Physical Sciences
-  date: 2021
-  url: https://www.researchgate.net/publication/390066565_Headless_CMS_and_the_Decoupled_Frontend_Architecture
+    volume: 9
+    issue: 4
+  page-range: 1-5
+  date: 2021-08
+  doi: 10.5281/zenodo.14752509
   note: "Acesso em: 12 out. 2024"
 
 contentful2024headless:
