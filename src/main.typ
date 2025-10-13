@@ -222,126 +222,39 @@ Para endereçar as limitações do EAV, arquiteturas modernas de CMS adotam estr
 #linebreak()
 *Armazenamento JSON para Complexidade*: Estruturas complexas como listas, objetos aninhados e dados semi-estruturados aproveitam suporte nativo de bancos relacionais modernos (PostgreSQL, MySQL 8+) para tipos JSON @postgresql2024json. Isso mantém flexibilidade estrutural enquanto oferece operadores de consulta especializados.
 #linebreak()
-*Metadados de Schema*: Informações sobre a estrutura dos dados (definição de campos, tipos, validações) são mantidas em tabelas de metadados, permitindo validação em nível de aplicação e geração dinâmica de interfaces @fowler2002patterns.
+*Metadados de Schema*: Informações sobre a estrutura dos dados (definição de campos, tipos, validações) são mantidas em tabelas de metadados. Esta abordagem de "Metadata Mapping" permite processar mapeamentos objeto-relacional de forma genérica através de código que interpreta os metadados, facilitando operações de leitura, inserção e atualização sem código repetitivo @fowler2002patterns.
 #linebreak()
 *Estratégias de Relacionamento*: Referências entre entidades são gerenciadas através de tabelas de junção dedicadas, preservando integridade referencial enquanto suportam cardinalidades variadas (um-para-um, um-para-muitos, muitos-para-muitos) @silberschatz2018database.
 #linebreak()
 Estas abordagens híbridas permitem que sistemas modernos de gerenciamento de conteúdo ofereçam a flexibilidade de schemas dinâmicos sem comprometer significativamente a performance das operações mais comuns.
 
-== Controle de Acesso: Do Sistema de Papéis ao Sistema de Atributos
+== Controle de Acesso Baseado em Atributos (ABAC)
 
-Imagine uma empresa onde existem diferentes cargos: gerente, editor e visitante. O sistema RBAC (sigla em inglês para _Role-Based Access Control_, ou "Controle de Acesso Baseado em Papéis") funciona exatamente assim - você atribui um "papel" ou "cargo" para cada usuário, e esse papel define o que a pessoa pode ou não fazer @sandhu1996role.
+Sistemas de controle de acesso definem quem pode acessar quais recursos em um sistema. O modelo tradicional RBAC (_Role-Based Access Control_) associa permissões a papéis organizacionais: um usuário com papel "Editor" recebe todas as permissões definidas para esse papel @sandhu1996role. Embora amplamente utilizado @ferraiolo2003role, o RBAC apresenta limitações em ambientes complexos: explosão do número de papéis necessários, incapacidade de considerar atributos dinâmicos como horário e localização, e dificuldade em implementar controle granular fino @coyne2013abac.
+#linebreak()
+O ABAC (_Attribute-Based Access Control_) representa evolução dos modelos de controle de acesso ao basear decisões de autorização em atributos de múltiplas dimensões @nist2014abac. Diferentemente do RBAC, que avalia apenas o papel do usuário, o ABAC considera atributos do sujeito (usuário), do recurso (objeto sendo acessado), da ação (operação requisitada) e do ambiente (contexto situacional como horário e localização) @servos2017abac.
 
-Por exemplo:
-- Um *Gerente* pode criar, editar e excluir qualquer conteúdo
-- Um *Editor* pode criar e editar, mas não excluir
-- Um *Visitante* pode apenas visualizar
+=== Arquitetura e Componentes
 
-Esse sistema funcionou bem por muitos anos e ainda é amplamente usado @ferraiolo2003role. No entanto, ele tem três problemas principais que limitam sua aplicabilidade em sistemas modernos @oh2007administration:
+A arquitetura ABAC, conforme especificada por @nist2014abac, compreende quatro componentes principais:
 #linebreak()
-*Explosão de Papéis*: Em empresas grandes, você acaba precisando criar muitos papéis diferentes. Por exemplo: "Editor de Notícias", "Editor de Esportes", "Editor de Tecnologia", "Editor Sênior de Notícias"... A lista cresce rapidamente e fica difícil de gerenciar @researchgate2013abac.
+*Policy Decision Point (PDP)*: Motor de decisão que avalia políticas e atributos para produzir veredictos de autorização.
 #linebreak()
-*Falta de Flexibilidade com Contexto*: O RBAC não consegue criar regras como "Editores só podem publicar durante horário comercial" ou "Este conteúdo só pode ser acessado de dentro da empresa". Ele não considera a situação em que a pessoa está @nist2014abac.
+*Policy Enforcement Point (PEP)*: Ponto de interceptação que requisita decisões ao PDP e aplica os veredictos.
 #linebreak()
-*Controle Limitado*: É difícil criar regras muito específicas, como "este usuário pode editar o título mas não o corpo do texto" ou "pode ver alguns campos mas não outros" @servos2017abac.
+*Policy Information Point (PIP)*: Repositório de atributos que fornece informações contextuais ao PDP.
+#linebreak()
+*Policy Administration Point (PAP)*: Interface para criação e gerenciamento de políticas.
+#linebreak()
+Esta arquitetura permite expressar regras como "usuários do departamento X podem editar recursos confidenciais apenas durante horário comercial", combinando múltiplos atributos em uma única política @nist2014abac.
 
-=== O Sistema Moderno: ABAC (Controle Baseado em Atributos)
+=== Padrões e Implementações
 
-O ABAC (_Attribute-Based Access Control_, ou "Controle de Acesso Baseado em Atributos") é uma evolução que resolve esses problemas @nist2014abac. Em vez de simplesmente olhar o "cargo" da pessoa, o sistema analisa várias características ou "atributos" antes de decidir se permite ou não uma ação.
-
-O ABAC considera quatro tipos de informação @servos2017abac:
-
-1. *Atributos da Pessoa*: Quem é o usuário (seu ID, cargo, departamento, há quanto tempo trabalha na empresa)
-2. *Atributos do Conteúdo*: O que está sendo acessado (tipo de documento, quem criou, nível de confidencialidade, data de criação)
-3. *Atributos da Ação*: O que a pessoa quer fazer (ler, editar, excluir, publicar)
-4. *Atributos do Ambiente*: Em que situação (horário do dia, localização, tipo de dispositivo usado)
-
-Com ABAC, você pode criar regras mais inteligentes como:
+XACML (_eXtensible Access Control Markup Language_) constitui o padrão OASIS para especificação de políticas ABAC @oasis2013xacml. XACML define estrutura hierárquica de _rules_, _policies_ e _policy sets_, além de algoritmos de combinação (`deny-overrides`, `permit-overrides`) para resolução determinística de conflitos entre políticas @combiningpolicies2009.
 #linebreak()
-"Médicos podem acessar prontuários de pacientes do seu departamento, mas apenas durante o horário de trabalho e usando um dispositivo aprovado pelo hospital"
+_Open Policy Agent_ (OPA) emergiu como implementação moderna de ABAC, oferecendo linguagem declarativa Rego para especificação de políticas e arquitetura desacoplada _policy-as-code_ @openpolicyagentcontributors2024opa. Outras implementações incluem Casbin (biblioteca multi-linguagem) @casbin2024docs, AWS IAM com atributos baseados em tags @aws2024abac, e Apache Ranger para segurança de dados @ranger2024docs.
 #linebreak()
-Essa regra seria extremamente difícil (ou impossível) de implementar com o sistema tradicional de papéis.
-
-=== Como o ABAC Funciona
-
-O sistema ABAC possui quatro componentes principais que trabalham juntos @nist2014abac:
-#linebreak()
-*Ponto de Decisão (PDP - _Policy Decision Point_)*: É como um juiz que analisa as regras e decide se permite ou nega o acesso. Ele recebe informações sobre quem está tentando fazer o quê, consulta as políticas definidas e dá um veredicto: "permitido" ou "negado".
-#linebreak()
-*Ponto de Aplicação (PEP - _Policy Enforcement Point_)*: É como um guarda de segurança que intercepta toda tentativa de acesso. Quando alguém tenta fazer algo, o PEP para a requisição e pergunta ao PDP se pode permitir. Só depois da aprovação é que a ação acontece.
-#linebreak()
-*Ponto de Informação (PIP - _Policy Information Point_)*: É como um banco de dados de informações. Quando o PDP precisa saber se o usuário pertence a determinado departamento ou se hoje é dia útil, ele busca essas informações no PIP.
-#linebreak()
-*Ponto de Administração (PAP - _Policy Administration Point_)*: É a interface onde os administradores criam e gerenciam as regras de acesso. Funciona como um painel de controle para definir quem pode fazer o quê e em que situação.
-
-=== Por Que o ABAC é Melhor para Sistemas Modernos
-
-O ABAC oferece quatro vantagens principais sobre modelos tradicionais @researchgate2013abac:
-#linebreak()
-*Mais Expressivo*: Permite criar regras complexas e inteligentes em linguagem quase natural, considerando múltiplos fatores ao mesmo tempo.
-#linebreak()
-*Mais Flexível*: As regras se adaptam automaticamente às mudanças. Se um funcionário muda de departamento, suas permissões mudam automaticamente sem precisar alterar configurações manualmente.
-#linebreak()
-*Mais Granular*: Permite controlar o acesso em nível muito detalhado, até mesmo campo por campo em um formulário. Essencial para sistemas de gerenciamento de conteúdo onde diferentes informações têm diferentes níveis de sensibilidade.
-#linebreak()
-*Mais Contextual*: Leva em conta a situação em que o acesso está acontecendo - horário, local, dispositivo - criando um sistema de segurança mais inteligente e adaptável.
-
-== Frameworks e Padrões para Implementação de ABAC
-
-_Open Policy Agent_ emergiu como padrão de facto para implementação de ABAC em sistemas modernos. Conforme documentado por @openpolicyagentcontributors2024opa, OPA oferece _policy engine_ de propósito geral com linguagem declarativa Rego, arquitetura desacoplada _Policy-as-Code_ e _performance_ otimizada para milhares de autorizações por segundo.
-#linebreak()
-A linguagem Rego permite expressão de políticas complexas de forma declarativa:
-
-```rego
-allow {
-  is_editor
-  has_department_access
-  within_business_hours
-}
-
-is_editor {
-  input.user.role == "editor"
-}
-
-has_department_access {
-  input.user.department == input.resource.department
-}
-
-within_business_hours {
-  9 <= time.clock(time.now_ns())[0] < 17
-}
-```
-
-XACML permanece como padrão OASIS principal para linguagem de políticas ABAC. Conforme especificado por @oasis2013xacml, XACML define arquitetura, protocolo request/response e 13 algoritmos de combinação para resolução de conflitos entre políticas.
-#linebreak()
-A estrutura hierárquica do XACML inclui:
-- *_Rules_*: Unidade básica de política com condição e efeito
-- *_Policies_*: Conjunto de _rules_ com algoritmo de combinação
-- *_PolicySets_*: _Container_ para _policies_ com meta-políticas
-
-Algoritmos de combinação como `deny-overrides` e `permit-overrides` resolvem conflitos sistematicamente, essencial para implementações robustas em sistemas enterprise.
-#linebreak()
-*Casbin*: Biblioteca multi-linguagem que oferece ABAC simplificado usando structs/objetos, popular para implementações em Node.js e Python @casbin2024docs.
-#linebreak()
-*AWS IAM com Tags*: Implementa ABAC nativamente usando tags como atributos, demonstrando escalabilidade enterprise em ambientes cloud @aws2024abac.
-#linebreak()
-*Apache Ranger*: Framework abrangente para segurança de dados com suporte nativo para tag-based ABAC policies e integração com Apache Atlas @ranger2024docs.
-
-== Segurança e Performance em Sistemas ABAC
-
-A literatura identifica vulnerabilidades específicas do ABAC que exigem mitigação cuidadosa:
-#linebreak()
-*_Attribute Poisoning_*: Atacantes manipulam atributos de entrada para obter acesso não autorizado.
-#linebreak()
-*_Inference Attacks_*: Exploração de padrões comportamentais para inferir regras de políticas. Defendido por limitação da visibilidade de regras aplicáveis e obfuscação de decisões.
-#linebreak()
-*_Policy Conflicts_*: Múltiplas políticas podem produzir decisões conflitantes. @oasis2013xacml especifica algoritmos formais para resolução, enquanto @combiningpolicies2009 analisa teoria e prática de combinação de políticas.
-#linebreak()
-*_Smart Mask Ordering_*: Reordenação de avaliação de atributos por probabilidade de decisão, resultando em 89% de melhoria de _performance_.
-#linebreak()
-*_Attribute Caching_*: _Cache_ distribuído de atributos frequentemente acessados, reduzindo latência de PIPs externos.
-#linebreak()
-*_Policy Indexing_*: Estruturas de dados otimizadas para busca rápida de políticas aplicáveis baseada em atributos de contexto.
+Para sistemas de gerenciamento de conteúdo, o ABAC oferece controle granular essencial: diferentes campos podem ter diferentes níveis de sensibilidade, e o acesso pode variar baseado em propriedade do conteúdo, status de publicação e contexto do usuário. Esta flexibilidade permite implementar requisitos complexos de segurança mantendo políticas centralizadas e auditáveis @nist2014abac.
 
 == Tecnologias de Interface Moderna
 
