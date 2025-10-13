@@ -80,7 +80,7 @@ Os sistemas de gerenciamento de conteúdo evoluíram significativamente desde o 
 
 Com o amadurecimento da web, surgiram plataformas que simplificaram radicalmente este processo. Sistemas como WordPress e Joomla democratizaram a criação de sites ao oferecer interfaces visuais intuitivas, permitindo que usuários sem conhecimento de programação pudessem gerenciar conteúdo @wordpress2024docs @joomla2024docs. Esta abordagem foi tão bem-sucedida que, atualmente, o WordPress sozinho é utilizado por mais de 40% de todos os sites da internet @w3techs2024usage.
 
-Mais recentemente, observa-se o crescimento de uma arquitetura conhecida como CMS headless, onde o backend de gerenciamento de conteúdo é completamente separado do frontend de apresentação @headless2021decoupled. Esta separação oferece maior flexibilidade para distribuir o mesmo conteúdo através de múltiplos canais (web, aplicativos móveis, dispositivos IoT, etc.), respondendo às demandas de uma experiência digital cada vez mais diversificada.
+Mais recentemente, observa-se o crescimento de uma arquitetura conhecida como CMS headless, onde o backend de gerenciamento de conteúdo é completamente separado do frontend de apresentação @boiko2005; @headless2021decoupled. Esta separação oferece maior flexibilidade para distribuir o mesmo conteúdo através de múltiplos canais (web, aplicativos móveis, dispositivos IoT, etc.), respondendo às demandas de uma experiência digital cada vez mais diversificada.
 
 === Funções Fundamentais de um CMS
 
@@ -98,7 +98,7 @@ Hoje existem três categorias principais de CMS @headless2021decoupled:
 #linebreak()
 *CMS Tradicionais*: Como o WordPress, onde tudo vem junto em um pacote único @wordpress2024docs. São fáceis de usar e instalar, mas têm limitações quando você precisa de algo mais personalizado ou quando o site cresce muito.
 #linebreak()
-*CMS _Headless_ (Desacoplados)*: Separam o gerenciamento de conteúdo da apresentação visual @contentful2024headless. É como ter uma biblioteca central de conteúdo que pode alimentar simultaneamente seu site, aplicativo de celular e até assistentes de voz. Oferece muito mais flexibilidade, mas é mais complexo de configurar.
+*CMS _Headless_ (Desacoplados)*: Separam o gerenciamento de conteúdo da apresentação visual @headless2021decoupled @boiko2005. É como ter uma biblioteca central de conteúdo que pode alimentar simultaneamente seu site, aplicativo de celular e até assistentes de voz. Oferece muito mais flexibilidade, mas é mais complexo de configurar.
 #linebreak()
 *CMS Híbridos*: Combinam as duas abordagens @strapi2024docs, permitindo usar o sistema da forma tradicional ou moderna, conforme a necessidade do projeto.
 
