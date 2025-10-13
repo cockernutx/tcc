@@ -21,7 +21,8 @@
 		"vscode": {
 			"extensions": [
 				"tomoki1207.pdf",
-				"myriad-dreamin.tinymist"
+				"myriad-dreamin.tinymist",
+				"ms-vscode.vscode-copilot-vision"
 			]
 		}
 	}

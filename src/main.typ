@@ -126,7 +126,7 @@ Essa abordagem permite o "_Content as a Service_" (CaaS), ou "Conteúdo como Ser
 
 *Liberdade Tecnológica*: Você pode usar as melhores ferramentas para cada parte @headless2021decoupled. Diferentes tecnologias de interface podem coexistir - site, aplicativo móvel e painel administrativo podem usar tecnologias distintas, mas todos consomem os mesmos dados do backend.
 #linebreak()
-*Escalabilidade Independente*: Se o site está recebendo muito tráfego, você pode aumentar apenas os recursos do frontend. Se precisa processar mais conteúdo, aumenta apenas o backend @kleppmann2017designing. É como poder expandir cômodos específicos da casa sem mexer nos outros.
+*Escalabilidade Independente*: A arquitetura desacoplada permite que cada componente escale de forma independente conforme sua demanda específica @headless2021decoupled. Aplicando princípios de arquiteturas _shared-nothing_, onde cada componente utiliza recursos computacionais independentes @kleppmann2017designing, é possível aumentar recursos do frontend quando há picos de tráfego ou expandir o backend quando necessário processar mais conteúdo, sem afetar outros componentes do sistema.
 #linebreak()
 *Reutilização Máxima de Conteúdo*: O mesmo conteúdo pode ser consumido por múltiplos canais sem necessidade de duplicação @headless2021decoupled. Um artigo criado uma vez pode ser distribuído automaticamente para site, aplicativo móvel, assistentes de voz, smartwatches e outros dispositivos conectados.
 #linebreak()
@@ -138,7 +138,7 @@ A arquitetura _headless_ apresenta complexidades que devem ser consideradas @hea
 #linebreak()
 *Maior Complexidade Técnica*: Diferentemente de sistemas monolíticos tradicionais que oferecem interfaces integradas prontas para uso, sistemas headless exigem que desenvolvedores compreendam conceitos de APIs, protocolos de comunicação cliente-servidor, e arquiteturas distribuídas @sommerville2010.
 #linebreak()
-*Coordenação Entre Equipes*: A separação entre frontend e backend requer coordenação cuidadosa entre equipes que trabalham em cada camada, garantindo que as interfaces de comunicação permaneçam consistentes e que mudanças sejam sincronizadas adequadamente @kleppmann2017designing.
+*Coordenação Entre Equipes*: A separação entre frontend e backend requer coordenação cuidadosa entre equipes que trabalham em cada camada, garantindo que as interfaces de comunicação permaneçam consistentes e que mudanças sejam sincronizadas adequadamente. Em sistemas distribuídos, a coordenação adequada é essencial para manter a integridade e consistência dos dados @kleppmann2017designing.
 
 == GraphQL: Uma Forma Mais Inteligente de Buscar Dados
 
