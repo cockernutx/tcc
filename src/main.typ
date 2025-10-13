@@ -82,15 +82,15 @@ Com o amadurecimento da web, surgiram plataformas que simplificaram radicalmente
 
 Mais recentemente, observa-se o crescimento de uma arquitetura conhecida como CMS headless, onde o backend de gerenciamento de conteúdo é completamente separado do frontend de apresentação @headless2021decoupled. Esta separação oferece maior flexibilidade para distribuir o mesmo conteúdo através de múltiplos canais (web, aplicativos móveis, dispositivos IoT, etc.), respondendo às demandas de uma experiência digital cada vez mais diversificada.
 
-=== Componentes Básicos de um CMS
+=== Funções Fundamentais de um CMS
 
-Todo CMS moderno possui cinco partes essenciais @nath2010content:
+Um sistema de gerenciamento de conteúdo, independentemente de sua complexidade, realiza três funções fundamentais @boiko2005:
 
-1. *Painel Administrativo*: Onde você cria e edita o conteúdo (textos, imagens, vídeos)
-2. *Banco de Dados*: Onde todas as informações são armazenadas de forma organizada
-3. *Sistema de Publicação*: Que cuida de mostrar o conteúdo para os visitantes
-4. *Controle de Acesso*: Que define quem pode ver ou editar cada coisa
-5. *Conexões com Outros Sistemas*: Para integrar com redes sociais, sistemas de pagamento, etc.
+1. *Coleta (Collection)*: Criação ou aquisição de conteúdo de fontes existentes. Dependendo da origem, pode ser necessário converter o conteúdo para um formato padrão. Esta etapa inclui edição, segmentação em componentes menores e adição de metadados apropriados.
+
+2. *Gerenciamento (Management)*: Armazenamento estruturado do conteúdo em um repositório, que consiste em registros de banco de dados e/ou arquivos contendo componentes de conteúdo e dados administrativos. Inclui controle de versões, workflow e administração de usuários.
+
+3. *Publicação (Publishing)*: Disponibilização do conteúdo através da extração de componentes do repositório e construção de publicações direcionadas, como sites, documentos imprimíveis e newsletters. As publicações consistem em componentes organizados adequadamente, funcionalidades, informações padrão e navegação.
 
 === Três Tipos de CMS
 
