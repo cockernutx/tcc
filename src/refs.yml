@@ -177,6 +177,15 @@ solidjs2024docs:
   date: 2024
   note: "Acesso em: 10 set. 2024"
 
+sommerville2010:
+  type: book
+  title: "Software Engineering"
+  author: Sommerville, Ian
+  edition: 10
+  publisher: Pearson
+  location: Boston
+  date: 2015
+
 strapi2024docs:
   type: web
   title: "Strapi Documentation: Developer Documentation"
