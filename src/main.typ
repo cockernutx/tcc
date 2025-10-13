@@ -144,7 +144,7 @@ A arquitetura _headless_ apresenta complexidades que devem ser consideradas @hea
 
 Imagine que você vai a um restaurante e pede um prato específico. Com APIs REST tradicionais, é como se o garçom trouxesse a refeição completa mesmo que você só quisesse a salada. Ou então você precisasse fazer três pedidos diferentes para conseguir montar sua refeição completa - um pedido para o prato principal, outro para a bebida, outro para a sobremesa.
 #linebreak()
-Isso causa dois problemas principais @graphql2024official:
+Isso causa dois problemas principais @banks2018learning:
 1. *_Over-fetching_*: Receber mais dados do que você precisa (desperdício de internet e processamento)
 2. *_Under-fetching_*: Precisar fazer várias requisições separadas para conseguir todos os dados necessários (lentidão)
 
@@ -164,26 +164,23 @@ Com GraphQL, você faz uma única pergunta detalhada e recebe exatamente o que p
 
 === Operações do GraphQL
 
-O GraphQL trabalha com três tipos de operações principais @banks2018learning:
+O GraphQL trabalha com dois tipos principais de operações @banks2018learning:
 #linebreak()
 *_Queries_ (Consultas)*: São operações de leitura de dados. Quando você quer buscar informações do sistema sem modificar nada, usa uma query. É como fazer uma pergunta ao banco de dados: "Me mostre todos os artigos publicados hoje" ou "Qual o nome do autor deste post?". As queries são somente leitura e nunca alteram dados.
 #linebreak()
 *_Mutations_ (Mutações)*: São operações que modificam dados. Quando você precisa criar, atualizar ou deletar informações, usa uma mutation. É como dar um comando de ação: "Crie um novo artigo", "Atualize o título deste post" ou "Delete este comentário". As mutations sempre retornam os dados modificados para você confirmar a mudança.
-#linebreak()
-*_Resolvers_ (Resolutores)*: São as funções que realmente executam o trabalho de buscar ou modificar os dados. Quando você faz uma query ou mutation, o resolver é quem vai no banco de dados, pega as informações necessárias e retorna o resultado. É como o cozinheiro que prepara seu pedido na cozinha - você não o vê trabalhando, mas ele é essencial para atender sua requisição.
+
+=== Resolvers: Conectando GraphQL aos Dados
+
+Para que as operações do GraphQL funcionem, cada campo na API precisa de um _resolver_ correspondente. Um _resolver_ é uma função que retorna dados para um campo específico @banks2018learning. Quando você faz uma query ou mutation, o resolver é quem vai no banco de dados, busca as informações necessárias e retorna o resultado. É como o cozinheiro que prepara seu pedido na cozinha - você não o vê trabalhando, mas ele é essencial para atender sua requisição. Os resolvers devem seguir as regras definidas no schema, retornando os dados no tipo e formato especificados.
 
 === GraphQL em Sistemas de Conteúdo
 
 Para sistemas de gerenciamento de conteúdo, o GraphQL é especialmente útil porque:
 #linebreak()
-*Adaptação a Diferentes Tipos*: O projeto usa "_Union Types_" (tipos unidos) que permitem que um campo possa conter diferentes tipos de dados - texto, número, data, imagem - e o GraphQL sabe lidar com cada um adequadamente.
+*Adaptação a Diferentes Tipos*: O GraphQL suporta "_Union Types_" (tipos unidos) que permitem que um campo possa conter diferentes tipos de dados @banks2018learning. Um mesmo campo pode retornar texto, número, data ou imagem, e o GraphQL sabe lidar com cada tipo adequadamente através de fragmentos específicos para cada variação.
 #linebreak()
-*Filtros Inteligentes*: Você pode fazer buscas específicas:
-- Em campos de texto: buscar coisas que "contêm" uma palavra, que "começam com" ou "terminam com" algo
-- Em campos numéricos: buscar valores maiores que, menores que, iguais a um número
-- Em campos de data: buscar conteúdos antes ou depois de uma data específica
-#linebreak()
-*Performance Otimizada*: O sistema é inteligente o suficiente para transformar sua consulta GraphQL em comandos otimizados para o banco de dados, buscando apenas o necessário e filtrando direto na fonte.
+*Filtros por Argumentos*: GraphQL permite passar argumentos nas consultas para filtrar resultados @banks2018learning. Você pode fazer buscas específicas em campos de texto (contém, começa com, termina com), campos numéricos (maior que, menor que, igual a), e campos de data (antes de, depois de), tornando as consultas mais precisas e eficientes.
 
 == Conceitos Técnicos Fundamentais
 
