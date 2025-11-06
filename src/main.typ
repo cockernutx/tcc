@@ -2,7 +2,7 @@
 
 // Document content
 #show: udf-paper.with(
-  title: "Desenvolvimento de um Sistema de Gerenciamento de Conteúdo Headless",
+  title: "TechtonicCMS: Um Sistema de Gerenciamento de Conteúdo Headless",
   subtitle: "Uma Abordagem Moderna para CMS",
   authors: (
     (name: "Gustavo Medeiros Lima", student-id: "31466281"),
