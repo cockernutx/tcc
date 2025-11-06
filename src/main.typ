@@ -735,7 +735,6 @@ Para ilustrar o funcionamento da interface administrativa, considere o processo 
 - Cria formulário de edição no painel administrativo
 - Registra operação na auditoria com timestamp e usuário responsável
 #linebreak()
-O processo completo leva tipicamente 2-3 minutos para usuários experientes, sem necessidade de escrever código ou modificar esquemas de banco de dados manualmente.
 
 
 == Tecnologias, Segurança e Performance
