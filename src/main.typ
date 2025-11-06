@@ -78,9 +78,9 @@ Pense no CMS como um editor de documentos, similar ao Microsoft Word, mas para s
 
 Os sistemas de gerenciamento de conteúdo evoluíram significativamente desde o surgimento da web. Inicialmente, a publicação de conteúdo na internet exigia conhecimento técnico: desenvolvedores precisavam editar manualmente arquivos HTML e fazer upload via FTP para cada atualização no site @boiko2005.
 
-Com o amadurecimento da web, surgiram plataformas que simplificaram radicalmente este processo. Sistemas como WordPress e Joomla democratizaram a criação de sites ao oferecer interfaces visuais intuitivas, permitindo que usuários sem conhecimento de programação pudessem gerenciar conteúdo @wordpress2024docs @joomla2024docs. Esta abordagem foi tão bem-sucedida que, atualmente, o WordPress sozinho é utilizado por mais de 40% de todos os sites da internet @w3techs2024usage.
+Com o amadurecimento da web nos anos 2000, surgiram plataformas que simplificaram radicalmente este processo. Sistemas como WordPress (lançado em 2003) e Joomla (2005) democratizaram a criação de sites ao oferecer interfaces visuais intuitivas, permitindo que usuários sem conhecimento de programação pudessem gerenciar conteúdo @headless2021decoupled; @boiko2005; @wordpress2024docs; @joomla2024docs. Esta abordagem foi tão bem-sucedida que, atualmente, o WordPress sozinho é utilizado por mais de 40% de todos os sites da internet @w3techs2024usage.
 
-Mais recentemente, observa-se o crescimento de uma arquitetura conhecida como CMS headless, onde o backend de gerenciamento de conteúdo é completamente separado do frontend de apresentação @boiko2005; @headless2021decoupled. Esta separação oferece maior flexibilidade para distribuir o mesmo conteúdo através de múltiplos canais (web, aplicativos móveis, dispositivos IoT, etc.), respondendo às demandas de uma experiência digital cada vez mais diversificada.
+Mais recentemente, observa-se o crescimento de uma arquitetura conhecida como CMS headless, onde o backend de gerenciamento de conteúdo é completamente separado do frontend de apresentação através de APIs @headless2021decoupled; @boiko2005. Esta separação oferece maior flexibilidade para distribuir o mesmo conteúdo através de múltiplos canais (web, aplicativos móveis, dispositivos IoT, etc.), respondendo às demandas de uma experiência digital cada vez mais diversificada.
 
 === Funções Fundamentais de um CMS
 
@@ -96,11 +96,11 @@ Um sistema de gerenciamento de conteúdo, independentemente de sua complexidade,
 
 Hoje existem três categorias principais de CMS @headless2021decoupled:
 #linebreak()
-*CMS Tradicionais*: Como o WordPress, onde tudo vem junto em um pacote único @wordpress2024docs. São fáceis de usar e instalar, mas têm limitações quando você precisa de algo mais personalizado ou quando o site cresce muito.
+*CMS Tradicionais*: Sistemas integrados onde backend e frontend formam um pacote único com forte acoplamento entre as camadas @headless2021decoupled; @wordpress2024docs. Exemplos como WordPress e Joomla são fáceis de usar e instalar, mas têm limitações quando se precisa de personalização avançada ou suporte a múltiplos canais de distribuição.
 #linebreak()
-*CMS _Headless_ (Desacoplados)*: Separam o gerenciamento de conteúdo da apresentação visual @headless2021decoupled @boiko2005. É como ter uma biblioteca central de conteúdo que pode alimentar simultaneamente seu site, aplicativo de celular e até assistentes de voz. Oferece muito mais flexibilidade, mas é mais complexo de configurar. Este conceito é amplamente discutido por Boiko (2005), que destaca a importância de frameworks robustos para a implementação de sistemas de gerenciamento de conteúdo, e por estudos recentes como o de 2021, que exploram a separação entre backend e frontend para maior escalabilidade e reutilização de conteúdo.
+*CMS _Headless_ (Desacoplados)*: Arquiteturas que separam completamente o gerenciamento de conteúdo da camada de apresentação através de APIs @headless2021decoupled; @boiko2005. Esta abordagem permite distribuir o mesmo conteúdo através de múltiplos canais (web, mobile, IoT) de forma agnóstica à tecnologia de frontend, oferecendo flexibilidade máxima para criar experiências personalizadas.
 #linebreak()
-*CMS Híbridos*: Combinam as duas abordagens @strapi2024docs, permitindo usar o sistema da forma tradicional ou moderna, conforme a necessidade do projeto.
+*CMS Híbridos*: Combinam características de ambas as abordagens, oferecendo flexibilidade para escolher entre acoplamento tradicional ou arquitetura desacoplada conforme a necessidade específica do projeto @headless2021decoupled; @strapi2024docs.
 
 == Arquitetura _Headless_: Separando a "Cabeça" do "Corpo"
 
@@ -262,7 +262,7 @@ As tecnologias de interface modernas representam uma evolução significativa no
 #linebreak()
 Para aplicações de gerenciamento de conteúdo, as características das tecnologias de interface modernas oferecem vantagens específicas:
 #linebreak()
-*Tamanho Otimizado*: Tecnologias modernas oferecem pacotes menores e tempo de carregamento reduzido, beneficiando _dashboards_ administrativos que frequentemente incluem múltiplas bibliotecas especializadas. Svelte, por exemplo, compila componentes em código JavaScript otimizado, resultando em _bundles_ menores @svelte2024docs.
+*Tamanho Otimizado*: Tecnologias modernas oferecem pacotes menores e tempo de carregamento reduzido, beneficiando _dashboards_ administrativos que frequentemente incluem múltiplas bibliotecas especializadas. Svelte, por exemplo, compila componentes em código JavaScript otimizado, resultando em _bundles_ menores que frameworks tradicionais @svelte2024docs.
 #linebreak()
 *_Performance_ Consistente*: Técnicas modernas de atualização de interface, como o _Virtual DOM_ do React @react2024docs e a reatividade granular do SolidJS @solidjs2024docs, oferecem renderização mais eficiente para aplicações que manipulam grandes volumes de dados, como listas de entradas de conteúdo ou árvores de categorias.
 
@@ -272,33 +272,33 @@ Para entender melhor o que este projeto oferece, é importante comparar com outr
 
 === WordPress: O Gigante Tradicional
 
-O WordPress é o sistema de gerenciamento de conteúdo mais popular do mundo, usado por mais de 40% de todos os sites @w3techs2024usage. Ele representa o modelo tradicional onde tudo vem em um pacote único @wordpress2024docs.
+O WordPress é o sistema de gerenciamento de conteúdo mais popular do mundo, usado por mais de 40% de todos os sites @w3techs2024usage. Ele representa o modelo tradicional de CMS monolítico onde todas as camadas estão fortemente acopladas @headless2021decoupled; @wordpress2024docs.
 #linebreak()
-*Pontos Fortes*: Fácil de usar, tem milhares de temas e plugins prontos, grande comunidade de suporte.
+*Pontos Fortes*: Fácil de usar, ecossistema extenso com milhares de temas e plugins, grande comunidade de suporte @wordpress2024docs.
 #linebreak()
-*Limitações*: Quando o site cresce muito ou precisa se integrar com aplicativos de celular, o WordPress mostra suas limitações. Ele não foi feito pensando em arquitetura headless, então usá-lo apenas como backend não é muito eficiente.
+*Limitações*: A arquitetura monolítica dificulta escalabilidade em ambientes de alto tráfego e integração com múltiplos canais de distribuição @headless2021decoupled. Embora existam extensões para funcionar como headless CMS, o sistema não foi originalmente projetado para essa arquitetura, resultando em performance subótima quando usado apenas como backend.
 
 === Joomla: O Meio-Termo
 
-O Joomla é uma alternativa ao WordPress que oferece controle de usuários e permissões um pouco mais robusto, mas ainda mantém a estrutura tradicional onde tudo está acoplado.
+O Joomla é uma alternativa ao WordPress que oferece controle de usuários e sistema de permissões mais robusto, mantendo a estrutura tradicional monolítica característica de CMS acoplados @headless2021decoupled; @joomla2024docs. Assim como outros CMS tradicionais, enfrenta limitações similares ao WordPress quando se trata de arquiteturas multi-canal e escalabilidade distribuída.
 
 === Strapi: O Principal Concorrente _Headless_
 
 O Strapi é o CMS _headless open-source_ (código aberto) mais conhecido atualmente @strapi2024docs. Ele compartilha várias ideias com este projeto:
 #linebreak()
 *Semelhanças*:
-- Permite criar coleções de conteúdo personalizadas
-- Oferece APIs GraphQL e REST
+- Permite criar coleções de conteúdo personalizadas @strapi2024docs
+- Oferece APIs GraphQL e REST para acesso ao conteúdo
 - Tem sistema de permissões baseado em papéis (roles)
 - Suporta vários tipos de dados diferentes
 #linebreak()
 *Diferenças Importantes*:
 #linebreak()
-*Controle de Permissões*: O Strapi usa apenas o sistema tradicional RBAC (controle por papéis) @strapi2024docs, que só permite definir permissões por tipo de conteúdo inteiro. Este projeto usa ABAC, permitindo controle muito mais fino - até mesmo por campo individual e considerando o contexto (horário, localização, etc.).
+*Controle de Permissões*: O Strapi usa apenas o sistema tradicional RBAC (controle por papéis) @strapi2024docs, que só permite definir permissões por tipo de conteúdo inteiro. Este projeto usa ABAC, permitindo controle muito mais fino - até mesmo por campo individual e considerando o contexto (horário, localização, etc.) conforme especificado por @nist2014abac.
 #linebreak()
-*Organização dos Dados*: Este projeto usa uma estratégia híbrida que organiza os dados de forma mais otimizada dependendo do tipo de informação, resultando em consultas mais rápidas.
+*Organização dos Dados*: Este projeto usa uma estratégia híbrida que organiza os dados de forma mais otimizada dependendo do tipo de informação, evitando as limitações do padrão EAV @nadkarni2007eav enquanto mantém flexibilidade de schema.
 #linebreak()
-*Regras Contextuais*: O Strapi não consegue criar regras como "só pode publicar durante horário comercial" ou "só pode acessar deste local". Este projeto implementa essas capacidades através do ABAC.
+*Regras Contextuais*: O Strapi não consegue criar regras como "só pode publicar durante horário comercial" ou "só pode acessar deste local". Este projeto implementa essas capacidades através do ABAC @nist2014abac.
 
 // ================================
 // CAPÍTULO 3 - CONCEITO E DESIGN DO SISTEMA
